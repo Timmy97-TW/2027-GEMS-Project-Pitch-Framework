@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ReLEAF，倒回二月 · Wound back to February — GEMS 2027 Pitch Framework</title>
+<meta name="description" content="The 2026 ReLEAF project written as a February proposal against the ten-gate framework, with what actually happened set beside each answer.">
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar__in">
+    <a class="bar__home" href="../"><b>GEMS 2027</b> <i>Project Pitch Framework</i></a>
+    <nav class="bar__nav" aria-label="Sections">
+      <a href="../"><span class="l-zh">總覽</span><span class="l-en">Overview</span></a>
+      <a href="../framework/"><span class="l-zh">十道門</span><span class="l-en">The gates</span></a>
+      <a href="./" aria-current="page"><span class="l-zh">ReLEAF 範例</span><span class="l-en">Worked example</span></a>
+      <a href="../toolkit/"><span class="l-zh">工具包</span><span class="l-en">Toolkit</span></a>
+    </nav>
+    <button class="bar__lang" type="button" data-lang-btn>English</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__in">
+    <p class="eyebrow"><span class="l-zh">完整範例</span><span class="l-en">Worked example</span></p>
+    <h1 class="bi">
+      <span class="zh">ReLEAF，倒回二月</span>
+      <span class="en">ReLEAF, wound back to February</span>
+    </h1>
+    <p class="hero__lede l-zh">這是把 2026 年的 ReLEAF 專案倒回定案前，按十道門寫成的一份完整提案。每一道門下面有兩層：<b>二月的答案</b>是當時應該寫出來的內容，<b>後來</b>是 2026 年真正量到的結果。兩者放在一起，就看得出哪些二月的承諾兌現了、哪些沒有、以及為什麼。</p>
+    <p class="hero__lede l-en">This is the 2026 ReLEAF project wound back to before the decision and written out against the ten gates. Each gate has two layers: <b>the February answer</b>, which is what should have been written at the time, and <b>what happened</b>, which is what 2026 actually measured. Set side by side they show which February promises were kept, which were not, and why.</p>
+    <ul class="hero__meta">
+      <li><b><span class="l-zh">專案</span><span class="l-en">Project</span></b><span>ReLEAF · iGEM 2026</span></li>
+      <li><b><span class="l-zh">村落</span><span class="l-en">Village</span></b><span>Biomanufacturing</span></li>
+      <li><b><span class="l-zh">底盤</span><span class="l-en">Chassis</span></b><span><i>B. subtilis</i> WB800</span></li>
+      <li><b><span class="l-zh">成績</span><span class="l-en">Score, this framework</span></b><span><span class="l-zh">71 / 100（見</span><span class="l-en">71 / 100 (see </span><a href="#verdict">PK</a><span class="l-zh">）</span><span class="l-en">)</span></span></li>
+    </ul>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <div class="sec">
+    <div class="box box--warn">
+      <h5><span class="l-zh">這一頁的讀法</span><span class="l-en">How to read this page</span></h5>
+      <p class="l-zh">標成「後來」的所有數字都是 2026 年事後量到的，二月當下並不存在。把它們放進一份假想的二月提案裡，唯一的目的是檢查這套架構會不會提早問出對的問題。對 2027 的新題目，「後來」那一欄一律是空的——那正是重點。</p>
+      <p class="l-en">Every number marked "what happened" was measured later in 2026 and did not exist in February. They sit inside a hypothetical February pitch for one purpose: to test whether this framework would have asked the right question early. For a new 2027 project that column is empty, which is the point.</p>
+    </div>
+  </div>
+
+  <div data-rail>
+    <div class="seg">
+      <div class="seg__track" role="tablist" aria-label="Phases">
+        <button class="seg__btn" role="tab" type="button" id="t1" aria-controls="p1" aria-selected="true">
+          <span class="l-zh">Ⅰ 值得做</span><span class="l-en">Ⅰ Worth it</span></button>
+        <button class="seg__btn" role="tab" type="button" id="t2" aria-controls="p2" aria-selected="false">
+          <span class="l-zh">Ⅱ 做得到</span><span class="l-en">Ⅱ Feasible</span></button>
+        <button class="seg__btn" role="tab" type="button" id="t3" aria-controls="p3" aria-selected="false">
+          <span class="l-zh">Ⅲ 範圍</span><span class="l-en">Ⅲ Scope</span></button>
+        <button class="seg__btn" role="tab" type="button" id="t4" aria-controls="p4" aria-selected="false">
+          <span class="l-zh">Ⅳ 收割</span><span class="l-en">Ⅳ Harvest</span></button>
+      </div>
+    </div>
+
+    <!-- ============================================== PHASE Ⅰ ============ -->
+    <section class="panel" id="p1" role="tabpanel" aria-labelledby="t1">
+
+      <!-- G1 -->
+      <article class="gate ph-1" id="g1">
+        <div class="gate__top">
+          <span class="gate__id">G1</span>
+          <h3 class="gate__name"><span class="l-zh">主張</span><span class="l-en">The claim</span></h3>
+          <span class="gate__w">10 / 10</span>
+        </div>
+
+        <h4><span class="l-zh">二月的答案</span><span class="l-en">The February answer</span></h4>
+        <div class="card card--leaf">
+          <p class="l-zh" style="font-size:1.0625rem;font-weight:550;color:var(--leaf-900);max-width:48ch"><b>一個密閉的中空纖維灌流培養系統，可以讓工程化的 <i>B. subtilis</i> 把植物保護蛋白分泌到無細胞的透膜液中，其濃度足以在鹽與熱逆境下使幼苗的根長與鮮重相對無細胞培養液對照有可量測的改善，而工程菌不離開迴路。</b></p>
+          <p class="l-en" style="font-size:1.0625rem;font-weight:550;color:var(--leaf-900);max-width:52ch"><b>A contained hollow-fibre perfusion culture can deliver a plant-protectant protein, secreted by engineered <i>B. subtilis</i>, into a cell-free permeate at a concentration that measurably improves seedling root length and fresh weight under salt and heat stress against a cell-free medium control, while the engineered cells never leave the loop.</b></p>
+        </div>
+
+        <h4><span class="l-zh">這個主張錯的時候長什麼樣子</span><span class="l-en">What it looks like when the claim is wrong</span></h4>
+        <ul>
+          <li class="l-zh">透膜液中偵測不到目標蛋白，或濃度與無質體對照無法區分。</li>
+          <li class="l-zh">蛋白過得去但活性為零——膜把折疊好的酵素剪掉了，或分泌訊號把它切壞了。</li>
+          <li class="l-zh">幼苗對透膜液與對無細胞培養液的反應相同，代表效果來自培養液成分，不是來自蛋白。</li>
+          <li class="l-zh">透膜側長出菌落，圍堵主張失效。</li>
+          <li class="l-en">No target protein detectable in the permeate, or a concentration indistinguishable from the plasmid-free control.</li>
+          <li class="l-en">Protein crosses but activity is zero: the membrane kept the folded enzyme out, or the secretion signal mangled it.</li>
+          <li class="l-en">Seedlings respond the same to the permeate and to plain cell-free medium, so the effect is the medium, not the protein.</li>
+          <li class="l-en">Colonies grow from the permeate side, and the containment claim is gone.</li>
+        </ul>
+
+        <h4><span class="l-zh">三個版本</span><span class="l-en">Three descriptions</span></h4>
+        <div class="shift">
+          <div class="shift__col">
+            <h6><span class="l-zh">給評審，25 字</span><span class="l-en">For a judge, 25 words</span></h6>
+            <p class="l-zh">把生產移到農場：密閉反應器在作物需要的那一天現做植物保護蛋白，工程菌留在膜的這一側。</p>
+            <p class="l-en">Manufacturing moved to the farm: a contained reactor makes a plant protectant on the day the crop needs it, with the cells kept behind the membrane.</p>
+          </div>
+          <div class="shift__a">→</div>
+          <div class="shift__col shift__col--to">
+            <h6><span class="l-zh">給使用者，一分鐘</span><span class="l-en">For a user, one minute</span></h6>
+            <p class="l-zh">你現在買的生物製劑要冷鏈、會失活、而且必須在知道要不要用之前就買。這台機器放在田邊，你在手機上按下同意，它幾天內做出當季要用的劑量，你稀釋後噴。</p>
+            <p class="l-en">The biologicals you buy now need a cold chain, lose activity, and must be bought before you know whether you need them. This unit stands by the field, you approve a run on your phone, it makes this season's dose in a few days, and you dilute it and spray.</p>
+          </div>
+        </div>
+
+        <div class="box box--note">
+          <h5><span class="l-zh">後來</span><span class="l-en">What happened</span></h5>
+          <p class="l-zh">這個主張兌現了，而且是 2026 最強的部分：反應器的透膜側在 72 小時的時間序列中每一個樣本都高於無質體對照（1.3 µg/mL），而透膜側兩次塗盤都沒有長出菌落。但主張的最後一段——「幼苗改善來自蛋白」——沒有用透膜液做完；植物實驗用的是另外製備的蛋白與菌液，不是反應器的產物。二月那句話裡的「透膜液」三個字，一直沒有在植物實驗裡出現。</p>
+          <p class="l-en">The claim was kept, and it is the strongest thing 2026 produced: over a 72-hour permeate time course every sample sat above the 1.3 µg/mL plasmid-free control, and the permeate side grew no colonies on two platings. The last clause — that the seedling improvement comes from the protein — was never closed with permeate: the plant work used separately prepared protein and culture, not the reactor's own output. The word "permeate" in that February sentence never reached the plant bench.</p>
+        </div>
+      </article>
+
+      <!-- G2 -->
+      <article class="gate ph-1" id="g2">
+        <div class="gate__top">
+          <span class="gate__id">G2</span>
+          <h3 class="gate__name"><span class="l-zh">前人與新意</span><span class="l-en">Prior art and the increment</span></h3>
+          <span class="gate__w">7 / 10</span>
+        </div>
+
+        <h4><span class="l-zh">文獻的三個錨</span><span class="l-en">The three anchors</span></h4>
+        <div class="tw">
+          <table>
+            <thead><tr>
+              <th><span class="l-zh">錨</span><span class="l-en">Anchor</span></th>
+              <th><span class="l-zh">我們相信它什麼</span><span class="l-en">What we trust it for</span></th>
+              <th><span class="l-zh">它不保證什麼</span><span class="l-en">What it does not promise</span></th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td><b><span class="l-zh">綠光開關</span><span class="l-en">Green-light switch</span></b><small>CcaS/CcaR, P<sub>cpcG2</sub></small></td>
+                <td><span class="l-zh">雙組分系統在大腸桿菌中以綠光開啟、紅光關閉，是已被定性的光基因迴路。</span><span class="l-en">A characterised two-component optogenetic circuit, green-on and red-off, in <i>E. coli</i>.</span></td>
+                <td><span class="l-zh">不保證它在 <i>B. subtilis</i> 裡有同樣的動態範圍，也不保證在高濁度培養中光穿得進去。這兩件事要自己量。</span><span class="l-en">It does not promise the same dynamic range in <i>B. subtilis</i>, and it does not promise light penetrates a dense culture. Both must be measured here.</span></td>
+              </tr>
+              <tr>
+                <td><b><span class="l-zh">分泌底盤</span><span class="l-en">Secretion chassis</span></b><small><i>B. subtilis</i> WB800</small></td>
+                <td><span class="l-zh">八個外切蛋白酶被剔除的菌株，是公認的異源蛋白分泌宿主。</span><span class="l-en">A strain with eight extracellular proteases knocked out, an accepted host for heterologous secretion.</span></td>
+                <td><span class="l-zh">不保證我們這三個蛋白分泌得出來；訊號肽與蛋白的搭配是經驗性的，要並列測試。</span><span class="l-en">It does not promise our three proteins will be secreted. Signal-peptide pairing is empirical and must be tested side by side.</span></td>
+              </tr>
+              <tr>
+                <td><b><span class="l-zh">植物逆境酵素</span><span class="l-en">Plant stress enzyme</span></b><small>ACC deaminase</small></td>
+                <td><span class="l-zh">促生菌的 ACC 脫胺酶降低乙烯前驅物、減輕鹽與淹水逆境，是文獻充分的機制。</span><span class="l-en">ACC deaminase from plant-growth-promoting bacteria lowers the ethylene precursor and relieves salt and flooding stress; the mechanism is well documented.</span></td>
+                <td><span class="l-zh">文獻裡幾乎都是活菌在根圈定殖的結果。純蛋白外加、而且是經膜後的蛋白，是另一回事——這正是我們要量的空白。</span><span class="l-en">Almost all of that literature is live bacteria colonising the rhizosphere. Applying the purified protein, and a protein that has crossed a membrane, is a different question. That gap is what we measure.</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4><span class="l-zh">iGEM 前人表</span><span class="l-en">The prior-iGEM table</span></h4>
+        <div class="box box--flag">
+          <h5><span class="l-zh">這一格在範例裡是空的，而且必須由搜尋填滿</span><span class="l-en">This cell is empty in the example, and search must fill it</span></h5>
+          <p class="l-zh">這是 2026 這一季最明顯的程序缺口，也是本架構裡唯一不能靠記憶或推測完成的欄位。2027 的提案在二月必須交出一張有連結的表：促生菌與 ACC 脫胺酶、CcaS/CcaR 光控、<i>B. subtilis</i> 分泌、以及中空纖維或灌流硬體，這四個關鍵字各自搜過 Registry 與歷年 wiki，列出隊伍、年份、證明了什麼、沒證明什麼。</p>
+          <p class="l-zh">用搜尋結果做出的結論，才可以寫成新意陳述。沒有這張表的題目，在 PK 的 G2 一律最高 5 分。</p>
+          <p class="l-en">This is the clearest procedural gap in the 2026 season, and the one column in this framework that cannot be completed from memory or inference. A 2027 pitch must hand over a linked table in February: four keyword sweeps — plant-growth-promoting bacteria and ACC deaminase, CcaS/CcaR optogenetics, <i>B. subtilis</i> secretion, and hollow-fibre or perfusion hardware — each searched across the Registry and the past wikis, listing team, year, what they proved and what they did not.</p>
+          <p class="l-en">Only a conclusion built from that search may be written as a novelty statement. A project without the table scores no more than 5 on G2 at the PK.</p>
+        </div>
+
+        <h4><span class="l-zh">新意陳述，與它的種類</span><span class="l-en">The novelty statement and its kind</span></h4>
+        <div class="card">
+          <p class="card__k"><span class="l-zh">種類：新整合 ＋ 新量測</span><span class="l-en">Kind: a new integration, plus a new method</span></p>
+          <p class="l-zh"><b>新整合</b>：光控的分泌迴路與中空纖維灌流分離分別都存在，而把它們接起來、並且在透膜液那一側同時量到蛋白與活性，這個交接點是我們要量的東西。<b>新量測</b>：我們自製的管線內 OD600 光度計在測量之前先把預期值寫進版本控制，再用實際跑出來的數據檢驗它——這在高中隊伍裡罕見，而且成本接近零。</p>
+          <p class="l-en"><b>New integration.</b> An optogenetic secretion circuit and hollow-fibre perfusion separation both exist. Joining them and measuring both protein and activity on the permeate side is the handover we set out to quantify. <b>New method.</b> Our in-line OD600 photometer had its expected values committed to version control before the measurements, and was then tested against what the runs returned. That is rare in high-school iGEM and it costs almost nothing.</p>
+          <p class="l-zh" style="margin-top:.85rem"><b>不宣稱</b>：首創、世界第一、任何「唯一」。也不宣稱光控在反應器裡可用，除非 G5 第四列拿到數據。</p>
+          <p class="l-en" style="margin-top:.85rem"><b>Not claimed:</b> first, world-first, only. Nor that light control works in the reactor, unless row four of the G5 table returns data.</p>
+        </div>
+
+        <div class="box box--note">
+          <h5><span class="l-zh">後來</span><span class="l-en">What happened</span></h5>
+          <p class="l-zh">「新量測」那一半完全兌現，而且變成全季最強的論證：八個預先登記的預測有五個被自己的數據推翻，而且那五個失敗被寫在頁面上。「新整合」那一半只兌現了一半：蛋白與活性都在透膜側量到了，但交接點的上游——綠光——從未進入反應器。至於 iGEM 前人表，整季都沒有做出來。</p>
+          <p class="l-en">The "new method" half was kept in full and became the season's strongest argument: of eight pre-registered predictions, five were overturned by the team's own data, and those five failures were published. The "new integration" half was kept halfway: protein and activity were both measured on the permeate side, but the upstream of that handover — green light — never entered the reactor. The prior-iGEM table was never assembled at all.</p>
+        </div>
+      </article>
+
+      <!-- G3 -->
+      <article class="gate ph-1" id="g3">
+        <div class="gate__top">
+          <span class="gate__id">G3</span>
+          <h3 class="gate__name"><span class="l-zh">影響與落地</span><span class="l-en">Impact and deployability</span></h3>
+          <span class="gate__w">7 / 8</span>
+        </div>
+
+        <div class="stats" style="--n:3">
+          <div class="stat"><b>0.29 °C</b><span class="l-zh">台灣自 1991 年起每十年的升溫速率，是這個題目的問題陳述基礎</span><span class="l-en">per decade, Taiwan's warming since 1991 — the problem statement's base</span></div>
+          <div class="stat"><b>99.2 %</b><span class="l-zh">面積小於 2 公頃的農場比例，耕作 85.3% 的農地</span><span class="l-en">of farms are under 2 ha, and they work 85.3% of the farmland</span></div>
+          <div class="stat"><b>~30 <span class="l-zh">天</span><span class="l-en">days</span></b><span class="l-zh">生物刺激素／肥料類的審查時程，相對生物農藥的 3–5 年</span><span class="l-en">review for a biostimulant or fertiliser, against 3–5 years for a biopesticide</span></div>
+        </div>
+
+        <h4><span class="l-zh">落地階梯，與十月站的那一階</span><span class="l-en">The ladder, and the rung October stands on</span></h4>
+        <ul class="check">
+          <li><b><span class="l-zh">第一階　實驗台</span><span class="l-en">Rung 1 · Bench</span></b><em><span class="l-zh">分泌、活性、植物反應各自在瓶子與培養皿裡成立。</span><span class="l-en">Secretion, activity and plant response each hold in flasks and dishes.</span></em></li>
+          <li><b><span class="l-zh">第二階　密閉原型</span><span class="l-en">Rung 2 · Contained prototype</span></b><em><span class="l-zh">同一條鏈在一台可以連續運轉數日的機器上跑完，並且有紀錄。</span><span class="l-en">The same chain runs end to end on a machine that holds for days, with a log.</span></em></li>
+          <li><b><span class="l-zh">第三階　使用者現場試用</span><span class="l-en">Rung 3 · User trial on site</span></b><em><span class="l-zh">十月我們會站在這裡與第二階之間：機器可運轉、農民看過、但沒有人用它種過一季。</span><span class="l-en">October stands between this and rung 2: the machine runs, farmers have seen it, nobody has grown a season with it.</span></em></li>
+          <li><b><span class="l-zh">第四階　田間試驗</span><span class="l-en">Rung 4 · Field trial</span></b><em><span class="l-zh">不在這一季。需要許可、需要重複田區、需要一整個作期。</span><span class="l-en">Not this season. Needs a permit, replicated plots and a full growing cycle.</span></em></li>
+          <li><b><span class="l-zh">第五階　法規與量產</span><span class="l-en">Rung 5 · Regulation and manufacture</span></b><em><span class="l-zh">不在這一季。但類別選擇（生物刺激素）要在二月就定，因為它決定第四階的時鐘。</span><span class="l-en">Not this season. But the category — biostimulant — is chosen in February, because it sets rung four's clock.</span></em></li>
+        </ul>
+
+        <h4><span class="l-zh">量級估算</span><span class="l-en">Order of magnitude</span></h4>
+        <p class="l-zh">二月必須寫出來的，是「一公頃一季需要多少酵素活性」對上「一台原型一天能做多少」，然後說出差幾個數量級。這個數字會決定十月被問到「產量夠嗎」時，是回答一個數字還是回答一段話。</p>
+        <p class="l-en">February must put "how much enzyme activity one hectare needs in a season" against "how much one prototype makes in a day", and say how many orders of magnitude separate them. That number decides whether October answers "is the output enough?" with a figure or with a paragraph.</p>
+
+        <div class="box box--note">
+          <h5><span class="l-zh">後來</span><span class="l-en">What happened</span></h5>
+          <p class="l-zh">模型最後給出了每公頃 37.6 kU 的需求、81 L 的體積與約 US$3,800 的成本估計，而原型的硬體成本約 NT$83,028（約 US$2,800）。但兩個頁面對硬體定價不同，因為沒有人是那個數字的主人——這是後來才顯現的 G10 問題。產量那一側也始終沒有一個「每天多少」的數字，因為透膜側濃度在 12 小時達峰後下降，跑更久不等於收更多。這個特性如果在二月就寫進量級估算，整季對「產量」的敘述會不一樣。</p>
+          <p class="l-en">The model eventually gave 37.6 kU per hectare, 81 L and about US$3,800, against a prototype hardware cost of about NT$83,028 (roughly US$2,800). Two pages then priced the hardware differently, because nobody owned the number — a G10 failure that only surfaced later. The output side never got a per-day figure either, because the permeate concentration peaks around 12 hours and falls, so a longer run does not mean a bigger harvest. Had that behaviour been written into the February estimate, the whole season's account of output would have read differently.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============================================== PHASE Ⅱ ============ -->
+    <section class="panel" id="p2" role="tabpanel" aria-labelledby="t2" hidden>
+
+      <!-- G4 -->
+      <article class="gate ph-2" id="g4">
+        <div class="gate__top">
+          <span class="gate__id">G4</span>
+          <h3 class="gate__name"><span class="l-zh">關鍵路徑</span><span class="l-en">The critical path</span></h3>
+          <span class="gate__w">9 / 15</span>
+        </div>
+
+        <h4><span class="l-zh">鏈，以及每一節要交給下一節什麼</span><span class="l-en">The chain, and what each link hands on</span></h4>
+        <div class="tw">
+          <table>
+            <thead><tr>
+              <th class="nowrap"><span class="l-zh">節</span><span class="l-en">Link</span></th>
+              <th><span class="l-zh">它要交出的東西</span><span class="l-en">What it must hand over</span></th>
+              <th class="nowrap"><span class="l-zh">狀態</span><span class="l-en">Status</span></th>
+            </tr></thead>
+            <tbody>
+              <tr><td><b>1</b> <span class="l-zh">感測與決策</span><span class="l-en">Sensing &amp; decision</span></td>
+                  <td><span class="l-zh">一個逆境指數，決定何時開燈</span><span class="l-en">A stress index that decides when the light goes on</span></td>
+                  <td><span class="pill pill--info"><span class="l-zh">肋骨</span><span class="l-en">rib</span></span></td></tr>
+              <tr><td><b>2</b> <span class="l-zh">光控迴路</span><span class="l-en">Light circuit</span></td>
+                  <td><span class="l-zh">綠光下的表現量，相對紅光／暗處</span><span class="l-en">Expression under green against red and dark</span></td>
+                  <td><span class="pill pill--kill"><span class="l-zh">單點失敗</span><span class="l-en">single point of failure</span></span></td></tr>
+              <tr><td><b>3</b> <span class="l-zh">分泌</span><span class="l-en">Secretion</span></td>
+                  <td><span class="l-zh">培養液中可偵測、可定量的目標蛋白</span><span class="l-en">Target protein detectable and quantified in the medium</span></td>
+                  <td><span class="pill pill--kill"><span class="l-zh">單點失敗</span><span class="l-en">single point of failure</span></span></td></tr>
+              <tr><td><b>4</b> <span class="l-zh">灌流與分離</span><span class="l-en">Perfusion &amp; separation</span></td>
+                  <td><span class="l-zh">透膜液中有蛋白、沒有細胞</span><span class="l-en">Protein in the permeate, cells not</span></td>
+                  <td><span class="pill pill--go"><span class="l-zh">脊椎</span><span class="l-en">spine</span></span></td></tr>
+              <tr><td><b>5</b> <span class="l-zh">活性</span><span class="l-en">Activity</span></td>
+                  <td><span class="l-zh">透膜液中的酵素活性，相對熱滅活對照</span><span class="l-en">Enzyme activity in the permeate against a heat-killed control</span></td>
+                  <td><span class="pill pill--go"><span class="l-zh">脊椎</span><span class="l-en">spine</span></span></td></tr>
+              <tr><td><b>6</b> <span class="l-zh">植物反應</span><span class="l-en">Plant response</span></td>
+                  <td><span class="l-zh">逆境下幼苗的根長與鮮重變化</span><span class="l-en">Root length and fresh weight under stress</span></td>
+                  <td><span class="pill pill--go"><span class="l-zh">脊椎</span><span class="l-en">spine</span></span></td></tr>
+              <tr><td><b>7</b> <span class="l-zh">劑量與成本</span><span class="l-en">Dose &amp; cost</span></td>
+                  <td><span class="l-zh">每公頃需求、每天產量、單位成本</span><span class="l-en">Demand per hectare, output per day, unit cost</span></td>
+                  <td><span class="pill pill--info"><span class="l-zh">肋骨</span><span class="l-en">rib</span></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4><span class="l-zh">單點失敗，與它排在哪裡</span><span class="l-en">The single point of failure, and where it sits</span></h4>
+        <p class="l-zh">第 3 節（分泌）是真正的單點失敗：蛋白出不來，後面四節全部不成立。第 2 節（光控）是題目的招牌，但它不是鏈的必要條件——組成型表現也能餵養第 4 到第 6 節。所以二月的正確排法是：</p>
+        <p class="l-en">Link 3, secretion, is the real single point of failure: if the protein does not come out, the four links after it do not exist. Link 2, the light switch, is the headline but it is not load-bearing — constitutive expression can feed links 4 to 6. So February's correct ordering is:</p>
+        <ul>
+          <li class="l-zh"><b>第 1 個月</b>　第 3 節的最小版本：組成型啟動子 ＋ 兩種分泌訊號並列，看培養液裡有沒有東西。這一步不需要光，也不需要反應器。</li>
+          <li class="l-zh"><b>第 2–3 個月</b>　第 2 節的 go／no-go：綠光對紅光的表現比，在光板上做，n＝3。這一步要在三月底有答案，因為若開關不成立，整季的敘述必須改成「組成型生產平台」，而那是一個完全可接受、但完全不同的題目。</li>
+          <li class="l-zh"><b>第 3–5 個月</b>　第 4、5 節：反應器與透膜液。</li>
+          <li class="l-zh"><b>第 5–7 個月</b>　第 6 節：植物。植物實驗的週期由種子決定，不能壓縮，所以要與反應器並行。</li>
+          <li class="l-en"><b>Month 1.</b> The minimum version of link 3: a constitutive promoter plus two secretion signals side by side, asking only whether anything appears in the medium. No light, no reactor needed.</li>
+          <li class="l-en"><b>Months 2–3.</b> The link-2 go/no-go: green against red expression on the light plate, n = 3. The answer is due by the end of March, because if the switch does not hold the season's account becomes "a constitutive production platform" — entirely acceptable, and an entirely different project.</li>
+          <li class="l-en"><b>Months 3–5.</b> Links 4 and 5: the reactor and the permeate.</li>
+          <li class="l-en"><b>Months 5–7.</b> Link 6: plants. The plant cycle is set by the seeds and cannot be compressed, so it runs in parallel with the reactor.</li>
+        </ul>
+
+        <h4><span class="l-zh">最長交期清單</span><span class="l-en">The long-lead list</span></h4>
+        <div class="tw">
+          <table>
+            <thead><tr>
+              <th><span class="l-zh">項目</span><span class="l-en">Item</span></th>
+              <th><span class="l-zh">交期</span><span class="l-en">Lead time</span></th>
+              <th><span class="l-zh">下單期限</span><span class="l-en">Order by</span></th>
+              <th><span class="l-zh">卡住誰</span><span class="l-en">Blocks</span></th>
+            </tr></thead>
+            <tbody>
+              <tr><td><span class="l-zh">合成基因片段（三個蛋白 × 兩種訊號肽）</span><span class="l-en">Synthesised fragments: three proteins × two signal peptides</span></td>
+                  <td><span class="l-zh">3–6 週，含海關</span><span class="l-en">3–6 weeks with customs</span></td><td><span class="l-zh">二月第一週</span><span class="l-en">first week of February</span></td><td class="nowrap"><span class="l-zh">第 3 節</span><span class="l-en">link 3</span></td></tr>
+              <tr><td><span class="l-zh">光控迴路質體（索取或合成）</span><span class="l-en">Optogenetic plasmid, requested or synthesised</span></td>
+                  <td><span class="l-zh">2–8 週，索取不可控</span><span class="l-en">2–8 weeks; a request is not under your control</span></td><td><span class="l-zh">一月，越早越好</span><span class="l-en">January, as early as possible</span></td><td class="nowrap"><span class="l-zh">第 2 節</span><span class="l-en">link 2</span></td></tr>
+              <tr><td><span class="l-zh">中空纖維模組</span><span class="l-en">Hollow-fibre module</span></td>
+                  <td><span class="l-zh">2–4 週</span><span class="l-en">2–4 weeks</span></td><td><span class="l-zh">三月</span><span class="l-en">March</span></td><td class="nowrap"><span class="l-zh">第 4 節</span><span class="l-en">link 4</span></td></tr>
+              <tr><td><span class="l-zh">ELISA 套組（抗體有批次差異，要留重訂時間）</span><span class="l-en">ELISA kits (lot-to-lot variation, leave room to reorder)</span></td>
+                  <td><span class="l-zh">2–4 週</span><span class="l-en">2–4 weeks</span></td><td><span class="l-zh">三月，分兩批</span><span class="l-en">March, in two batches</span></td><td class="nowrap"><span class="l-zh">第 3、4、5 節</span><span class="l-en">links 3, 4, 5</span></td></tr>
+              <tr><td><span class="l-zh">植物種子與消毒／光週期條件確立</span><span class="l-en">Seeds, plus sterilant and photoperiod settled</span></td>
+                  <td><span class="l-zh">自身週期 4–6 週</span><span class="l-en">a 4–6 week cycle of its own</span></td><td><span class="l-zh">三月開始第一輪練習</span><span class="l-en">first practice round in March</span></td><td class="nowrap"><span class="l-zh">第 6 節</span><span class="l-en">link 6</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box box--note">
+          <h5><span class="l-zh">後來</span><span class="l-en">What happened</span></h5>
+          <p class="l-zh">分泌那一節成立了，而且三個蛋白裡 ACC 脫胺酶的分泌量約為另外兩個的三倍，這個比較後來成為選擇主力蛋白的依據。反應器那兩節成立得很漂亮。但光控那一節——題目的招牌——排在了後面，整季每一個反應器批次都是組成型表現，而光控只在光板上測過，且在十月仍是「13 小時支持、16 小時反轉、n＝2、無統計」。<b>如果三月底有一個 go／no-go，這一季的講法會從「我們的光控系統」變成「我們的連續生產平台，附帶一個尚未整合的光控模組」——後者更弱，但不會在評審面前塌。</b></p>
+          <p class="l-en">Secretion held, and of the three proteins ACC deaminase was secreted at roughly three times the other two, a comparison that later decided which protein led. The two reactor links held well. The light link — the headline — was scheduled late, every reactor batch ran constitutive, and light control was tested only on the light plate, standing in October at "supported at 13 h, reversed at 16 h, n = 2, no statistic". <b>With a go/no-go at the end of March the season's story would have shifted from "our optogenetic system" to "our continuous production platform, with a light module not yet integrated" — weaker, and it would not collapse in front of a judge.</b></p>
+        </div>
+      </article>
+
+      <!-- G5 -->
+      <article class="gate ph-2" id="g5">
+        <div class="gate__top">
+          <span class="gate__id">G5</span>
+          <h3 class="gate__name"><span class="l-zh">量測計畫：六組必須落地的數據</span><span class="l-en">Measurement: the six data sets that must land</span></h3>
+          <span class="gate__w">8 / 15</span>
+        </div>
+
+        <p class="l-zh">這張表是整份提案的核心。它決定十月有東西可寫，也決定三月要買幾套 ELISA。</p>
+        <p class="l-en">This table is the core of the pitch. It decides whether October has anything to write, and how many ELISA kits March has to buy.</p>
+
+        <div class="tw">
+          <table>
+            <thead><tr>
+              <th class="nowrap"><span class="l-zh">主張</span><span class="l-en">Claim</span></th>
+              <th><span class="l-zh">數字與單位</span><span class="l-en">Number &amp; unit</span></th>
+              <th><span class="l-zh">對照</span><span class="l-en">Control</span></th>
+              <th class="nowrap">n</th>
+              <th><span class="l-zh">儀器</span><span class="l-en">Instrument</span></th>
+              <th class="nowrap"><span class="l-zh">完成</span><span class="l-en">By</span></th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td><b>M1</b> <span class="l-zh">蛋白分泌出來了</span><span class="l-en">The protein is secreted</span></td>
+                <td><span class="l-zh">培養液濃度 µg/mL，≥ 3× 對照</span><span class="l-en">supernatant µg/mL, ≥ 3× control</span></td>
+                <td><span class="l-zh">無質體 WB800 培養液；載體對照</span><span class="l-en">plasmid-free WB800 supernatant; vector control</span></td>
+                <td>3 <small><span class="l-zh">生物</span><span class="l-en">biol.</span></small></td>
+                <td><span class="l-zh">ELISA ＋ 西方墨點</span><span class="l-en">ELISA + blot</span></td>
+                <td class="nowrap"><span class="l-zh">5 月</span><span class="l-en">May</span></td>
+              </tr>
+              <tr>
+                <td><b>M2</b> <span class="l-zh">它是有活性的</span><span class="l-en">It is active</span></td>
+                <td><span class="l-zh">酵素活性 nmol mL⁻¹ h⁻¹</span><span class="l-en">activity, nmol mL⁻¹ h⁻¹</span></td>
+                <td><span class="l-zh">熱滅活同一樣本；純培養液空白</span><span class="l-en">heat-killed same sample; medium blank</span></td>
+                <td>3</td>
+                <td><span class="l-zh">微量盤比色法</span><span class="l-en">microplate colorimetric assay</span></td>
+                <td class="nowrap"><span class="l-zh">6 月</span><span class="l-en">June</span></td>
+              </tr>
+              <tr>
+                <td><b>M3</b> <span class="l-zh">細胞過不去</span><span class="l-en">Cells do not cross</span></td>
+                <td><span class="l-zh">透膜液 CFU/mL ＝ 0；qPCR 低於偵測</span><span class="l-en">permeate CFU/mL = 0; qPCR below detection</span></td>
+                <td><span class="l-zh">同日同批管腔側樣本塗盤</span><span class="l-en">lumen-side sample plated the same day</span></td>
+                <td>3 <small><span class="l-zh">批次</span><span class="l-en">runs</span></small></td>
+                <td><span class="l-zh">塗盤 ＋ qPCR</span><span class="l-en">plating + qPCR</span></td>
+                <td class="nowrap"><span class="l-zh">7 月</span><span class="l-en">July</span></td>
+              </tr>
+              <tr style="background:var(--amber-100)">
+                <td><b>M4</b> <span class="l-zh">光真的是開關</span><span class="l-en">Light is the switch</span><br><span class="pill pill--hold">go / no-go</span></td>
+                <td><span class="l-zh">綠／紅表現比 ≥ 2，附檢定</span><span class="l-en">green/red ratio ≥ 2 with a test</span></td>
+                <td><span class="l-zh">紅光、暗處、無迴路菌株</span><span class="l-en">red, dark, and a circuit-free strain</span></td>
+                <td>3 <small><span class="l-zh">／組</span><span class="l-en">per arm</span></small></td>
+                <td><span class="l-zh">光板 ＋ ELISA／活性</span><span class="l-en">light plate + ELISA/activity</span></td>
+                <td class="nowrap"><span class="l-zh">3 月底</span><span class="l-en">end of March</span></td>
+              </tr>
+              <tr>
+                <td><b>M5</b> <span class="l-zh">植物有反應</span><span class="l-en">Plants respond</span></td>
+                <td><span class="l-zh">根長 mm、鮮重 g，相對對照的倍率</span><span class="l-en">root length mm, fresh weight g, as a ratio to control</span></td>
+                <td><span class="l-zh">無細胞培養液；緩衝液；逆境但未處理</span><span class="l-en">cell-free medium; buffer; stressed untreated</span></td>
+                <td>9 <small><span class="l-zh">苗 × 3 盤</span><span class="l-en">seedlings × 3 plates</span></small></td>
+                <td><span class="l-zh">影像測量 ＋ 天秤</span><span class="l-en">image measurement + balance</span></td>
+                <td class="nowrap"><span class="l-zh">8 月</span><span class="l-en">Aug</span></td>
+              </tr>
+              <tr>
+                <td><b>M6</b> <span class="l-zh">反應器連續產出</span><span class="l-en">The reactor produces continuously</span></td>
+                <td><span class="l-zh">≥ 72 h 透膜側濃度時間序列 µg/mL</span><span class="l-en">≥ 72 h permeate time course, µg/mL</span></td>
+                <td><span class="l-zh">無質體菌株的反應器批次</span><span class="l-en">a plasmid-free reactor run</span></td>
+                <td>3 <small><span class="l-zh">同型批次</span><span class="l-en">runs of the same kind</span></small></td>
+                <td><span class="l-zh">管線內 OD ＋ ELISA</span><span class="l-en">in-line OD + ELISA</span></td>
+                <td class="nowrap"><span class="l-zh">9 月</span><span class="l-en">Sep</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box">
+          <h5><span class="l-zh">這張表的兩個關鍵欄位，二月不能空</span><span class="l-en">Two columns on this table that February may not leave blank</span></h5>
+          <ul>
+            <li class="l-zh"><b>M6 的對照</b>：一個「無質體菌株的反應器批次」。這一批不產蛋白，純粹用來證明 ELISA 在反應器環境下的背景值。它很貴（一整批次），所以一定要在二月就排進預算，否則整季都不會有人願意花一次批次去做對照。</li>
+            <li class="l-zh"><b>M6 的 n＝3 同型批次</b>：不是三種不同的批次，是同一個條件做三次。七種不同條件各做一次，看起來工作量更大，但一個主張都撐不起來。</li>
+            <li class="l-en"><b>M6's control</b>: one reactor run with a plasmid-free strain. It makes no protein; it exists to establish the ELISA's background inside the reactor. It is expensive — a whole run — so it must enter the budget in February, or nobody will spend a run on a control all season.</li>
+            <li class="l-en"><b>M6's n = 3 of the same kind</b>: not three different runs, the same condition three times. Seven different conditions once each looks like more work and supports no claim at all.</li>
+          </ul>
+        </div>
+
+        <div class="box box--note">
+          <h5><span class="l-zh">後來：這是整季最貴的一課</span><span class="l-en">What happened: the season's most expensive lesson</span></h5>
+          <div class="tw" style="margin-top:.75rem">
+            <table>
+              <thead><tr>
+                <th class="nowrap"><span class="l-zh">列</span><span class="l-en">Row</span></th>
+                <th><span class="l-zh">二月承諾</span><span class="l-en">February promised</span></th>
+                <th><span class="l-zh">十月交出</span><span class="l-en">October delivered</span></th>
+              </tr></thead>
+              <tbody>
+                <tr><td><b>M1</b></td><td>n = 3</td><td><span class="l-zh">成立。ACC 脫胺酶約為另兩個蛋白的 3 倍；但同一批 ELISA 上宿主背景值在不同盤之間會移動，於是部分表現排序不敢主張。</span><span class="l-en">Held. ACC deaminase at roughly 3× the other two. The host background moved between plates, so some expression rankings were not claimed.</span></td></tr>
+                <tr><td><b>M2</b></td><td>n = 3</td><td><span class="l-zh">成立但 n＝1。活性在 18 小時達峰 30.9 nmol mL⁻¹ h⁻¹；另有同一樣本 30 分鐘測得 7.25 與 28 小時平均 0.33 mU/mL 的兩個數字需要用衰減常數才能和解。</span><span class="l-en">Held at n = 1. Activity peaked at 18 h at 30.9 nmol mL⁻¹ h⁻¹. Two further figures from the same sample — 7.25 over 30 minutes and 0.33 mU/mL averaged over 28 hours — needed a decay constant to reconcile.</span></td></tr>
+                <tr><td><b>M3</b></td><td><span class="l-zh">3 批次 ＋ qPCR</span><span class="l-en">3 runs + qPCR</span></td><td><span class="l-zh">兩次塗盤，皆無菌落；沒有 qPCR，沒有孢子測試。0.2 µm 孔徑對上 0.25–1.0 µm 的菌體是物理論證，兩次塗盤是證據，但不是三次。</span><span class="l-en">Two platings, no colonies. No qPCR, no spore test. The 0.2 µm pore against a 0.25–1.0 µm cell is a physical argument; two platings are evidence, and they are not three.</span></td></tr>
+                <tr style="background:var(--rust-100)"><td><b>M4</b></td><td><span class="l-zh">3 月底 go／no-go，n＝3</span><span class="l-en">go/no-go end of March, n = 3</span></td><td><span class="l-zh">十月仍未解決：13 小時支持綠光（活性 10.4 對 0.7），16 小時反轉（1.0 對 3.7），ELISA 持平（12.9 對 12.5），n＝2，無統計。從未進入反應器。</span><span class="l-en">Still unresolved in October: green favoured at 13 h (activity 10.4 vs 0.7), reversed at 16 h (1.0 vs 3.7), ELISA flat (12.9 vs 12.5), n = 2, no statistic. Never entered the reactor.</span></td></tr>
+                <tr style="background:var(--leaf-50)"><td><b>M5</b></td><td>n = 9</td><td><span class="l-zh">兌現，而且是全季唯一帶統計的生物數據：鹽逆境 1.00 → 1.85，p ＝ 0.0002，鮮重 0.17 → 0.33 g；土壤 300 mM NaCl 1.00 → 1.17，p ＜ 0.0001。原因很簡單——植物便宜，所以重複做得起。</span><span class="l-en">Kept, and the only biological data in the season carrying statistics: under salt 1.00 → 1.85, p = 0.0002, fresh weight 0.17 → 0.33 g; in soil at 300 mM NaCl 1.00 → 1.17, p &lt; 0.0001. The reason is simple: plants are cheap, so replicates were affordable.</span></td></tr>
+                <tr><td><b>M6</b></td><td><span class="l-zh">3 個同型批次</span><span class="l-en">3 runs of the same kind</span></td><td><span class="l-zh">跑了四個整合批次、最長 102.4 小時、透膜側 72 小時序列每點都高於 1.3 µg/mL 的對照——但每個時間點 n＝1，而且四個批次條件都不同，不能併。</span><span class="l-en">Four integrated runs, the longest 102.4 hours, a 72-hour permeate series with every point above the 1.3 µg/mL control — and every time point n = 1, with four runs under four different conditions that cannot be pooled.</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="l-zh" style="margin-top:.85rem"><b>模式很清楚：便宜的實驗有重複，貴的實驗沒有。</b>植物拿到 n＝9 與 p 值，反應器拿到 n＝1。這不是紀律問題，是預算問題——而預算是在二月決定的。2027 的提案要做的事很具體：把 G5 每一列的 n 乘上單次成本，加總，然後讓那個總額出現在 G6 的耗材預算裡。如果加起來買不起，就減少列數，不要減少 n。</p>
+          <p class="l-en" style="margin-top:.85rem"><b>The pattern is plain: the cheap experiments have replicates and the expensive ones do not.</b> Plants returned n = 9 and p-values; the reactor returned n = 1. That is not a discipline problem, it is a budget problem — and the budget is set in February. The 2027 pitch has a specific job: multiply each G5 row's n by its unit cost, sum it, and make that sum appear in the G6 consumables budget. If the sum is unaffordable, cut rows, not n.</p>
+        </div>
+      </article>
+
+      <!-- G6 -->
+      <article class="gate ph-2" id="g6">
+        <div class="gate__top">
+          <span class="gate__id">G6</span>
+          <h3 class="gate__name"><span class="l-zh">資源：設備、錢、人</span><span class="l-en">Resources: equipment, money, people</span></h3>
+          <span class="gate__w">10 / 12</span>
+        </div>
+
+        <h4><span class="l-zh">設備三類</span><span class="l-en">Equipment in three classes</span></h4>
+        <div class="tw">
+          <table>
+            <thead><tr>
+              <th><span class="l-zh">類別</span><span class="l-en">Class</span></th>
+              <th><span class="l-zh">項目</span><span class="l-en">Items</span></th>
+              <th><span class="l-zh">卡住哪一列量測</span><span class="l-en">Which measurement it blocks</span></th>
+            </tr></thead>
+            <tbody>
+              <tr><td class="nowrap"><b><span class="l-zh">已經有</span><span class="l-en">Have</span></b></td>
+                  <td><span class="l-zh">生物安全櫃、滅菌鍋、搖培箱、離心機、PCR 與電泳、−20 °C、分光光度計、植物生長空間</span><span class="l-en">biosafety cabinet, autoclave, shaking incubator, centrifuge, PCR and gels, −20 °C, spectrophotometer, plant growth space</span></td>
+                  <td>—</td></tr>
+              <tr><td class="nowrap"><b><span class="l-zh">要借</span><span class="l-en">Borrow</span></b></td>
+                  <td><span class="l-zh">微量盤判讀儀（ELISA 與比色法）、qPCR、定序服務</span><span class="l-en">microplate reader (ELISA and colorimetric), qPCR, sequencing service</span></td>
+                  <td><span class="l-zh">M1、M2、M3、M6。四列裡有三列靠它，所以借用必須在二月有書面同意與時段。</span><span class="l-en">M1, M2, M3, M6. Three of the four depend on it, so the loan needs written agreement and booked slots in February.</span></td></tr>
+              <tr><td class="nowrap"><b><span class="l-zh">要買或做</span><span class="l-en">Buy or build</span></b></td>
+                  <td><span class="l-zh">中空纖維模組、灌流反應器、管線內光度計、光板</span><span class="l-en">hollow-fibre module, perfusion reactor, in-line photometer, light plate</span></td>
+                  <td><span class="l-zh">M3、M4、M6</span><span class="l-en">M3, M4, M6</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4><span class="l-zh">資本與自製成本（2026 實際數字）</span><span class="l-en">Capital and build costs, as 2026 actually spent them</span></h4>
+        <div class="tw">
+          <table>
+            <caption><span class="l-zh">這些是 2026 年的已知成本，可以直接當 2027 的估算基準。</span><span class="l-en">These are 2026's known costs and can be used directly as a 2027 baseline.</span></caption>
+            <thead><tr>
+              <th><span class="l-zh">項目</span><span class="l-en">Item</span></th>
+              <th class="num-c"><span class="l-zh">自製</span><span class="l-en">Build</span></th>
+              <th class="num-c"><span class="l-zh">市售替代</span><span class="l-en">Commercial</span></th>
+              <th><span class="l-zh">為什麼自製</span><span class="l-en">Why build it</span></th>
+            </tr></thead>
+            <tbody>
+              <tr><td><span class="l-zh">灌流反應器（含管線內光度計）</span><span class="l-en">Perfusion reactor, photometer included</span></td>
+                  <td class="num-c">US$1,023</td><td class="num-c"><span class="l-zh">研究級台式系統遠高於此</span><span class="l-en">far above, research benchtop</span></td>
+                  <td><span class="l-zh">M3 與 M6 沒有它就不存在</span><span class="l-en">M3 and M6 do not exist without it</span></td></tr>
+              <tr><td><span class="l-zh">中空纖維模組 0.2 µm，200 cm²</span><span class="l-en">Hollow-fibre module, 0.2 µm, 200 cm²</span></td>
+                  <td class="num-c">US$245</td><td class="num-c">—</td>
+                  <td><span class="l-zh">買的，不是做的；結垢後更換，無清洗流程，所以一季要編 2 個</span><span class="l-en">bought, not built; replaced when fouled rather than cleaned, so budget two per season</span></td></tr>
+              <tr><td><span class="l-zh">管線內 OD600 光度計（Pro）</span><span class="l-en">In-line OD600 photometer (Pro)</span></td>
+                  <td class="num-c">US$372</td><td class="num-c">~US$470</td>
+                  <td><span class="l-zh">便宜只是附帶：商用台式機沒辦法接在迴路裡，而取樣會污染迴路</span><span class="l-en">cheaper is incidental: a benchtop cannot sit in the loop, and sampling contaminates it</span></td></tr>
+              <tr><td><span class="l-zh">光度計簡化版（Slim）</span><span class="l-en">Photometer, slim version</span></td>
+                  <td class="num-c">US$235</td><td class="num-c">~US$470</td>
+                  <td><span class="l-zh">可複製性證據：外部的人照指南做得出來</span><span class="l-en">reproducibility evidence: outsiders built it from the guide</span></td></tr>
+              <tr><td><span class="l-zh">光板（6 條件 × 4 管）</span><span class="l-en">Light plate, 6 conditions × 4 tubes</span></td>
+                  <td class="num-c">US$66</td><td class="num-c">—</td>
+                  <td><span class="l-zh">M4 的 go／no-go 沒有它做不了</span><span class="l-en">M4's go/no-go cannot run without it</span></td></tr>
+              <tr><td><span class="l-zh">水耕板（列印件）</span><span class="l-en">Hydroponics plate, printed</span></td>
+                  <td class="num-c">~US$2</td><td class="num-c">—</td>
+                  <td><span class="l-zh">後來被試管架取代。這一項是 G7 該在二月砍掉的例子</span><span class="l-en">later replaced by tube racks. This is the item G7 should have cut in February</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4><span class="l-zh">耗材預算的三個大項</span><span class="l-en">The three big consumable lines</span></h4>
+        <div class="box box--warn">
+          <h5><span class="l-zh">量級估計，二月必須換成報價</span><span class="l-en">Orders of magnitude, to be replaced by quotes in February</span></h5>
+          <ul>
+            <li class="l-zh"><b>合成 DNA</b>　三個蛋白 × 兩種訊號肽，加上啟動子與終止子，約 6–10 kb。以片段合成的常見量級計算，這一項通常是四位數新台幣到五位數之間，交期比價格重要。</li>
+            <li class="l-zh"><b>ELISA 與抗體</b>　這是真正的隱藏成本。一塊 96 孔盤要同時放標準曲線、空白、對照與樣本，所以「一塊盤」能測的樣本數比直覺少得多。M1、M2、M6 三列的 n＝3 時間序列，一季要編十塊盤以上，而抗體有批次差異，要留重訂的時間與錢。</li>
+            <li class="l-zh"><b>培養與塑膠</b>　培養基、瓶器、濾膜、離心管、盤器。連續灌流特別吃培養基，一次 102 小時的批次會把整月的量用掉。</li>
+            <li class="l-en"><b>Synthesised DNA.</b> Three proteins × two signal peptides, plus promoters and terminators: roughly 6–10 kb. At the usual order of magnitude for fragment synthesis this is a four- to five-figure line in NT dollars, and the lead time matters more than the price.</li>
+            <li class="l-en"><b>ELISA and antibodies.</b> The real hidden cost. One 96-well plate also carries the standard curve, blanks and controls, so a plate measures far fewer samples than instinct suggests. The n = 3 time courses on M1, M2 and M6 need more than ten plates across a season, and antibody lots vary, so leave time and money to reorder.</li>
+            <li class="l-en"><b>Culture and plastics.</b> Media, vessels, filters, tubes, plates. Continuous perfusion is especially hungry: one 102-hour run consumes a month's media.</li>
+          </ul>
+        </div>
+
+        <h4><span class="l-zh">人與紀錄</span><span class="l-en">People and the record</span></h4>
+        <ul>
+          <li class="l-zh">每個實驗至少兩個人會做。2026 的教訓不是人手不足，是某些技術只有一個人會，於是那個人的考試週就是那條線的停擺週。</li>
+          <li class="l-zh">紀錄值班：每週一人，把那一週變成一頁（日期、目的、材料、結果、照片、下一步）。這一項要寫進人力表，因為 2026 的實驗紀錄是在十月從聊天室與投影片倒回來重建的，那次重建花掉的時間比一整季的值班還多。</li>
+          <li class="l-zh">生物安全：這個題目在 BSL-1 內。圍堵是物理的——0.2 µm 孔徑對上 0.25–1.0 µm 的菌體——不是基因線路，所以不需要自殺基因的逃脫率論證。</li>
+          <li class="l-en">Every experiment has at least two people who can run it. The 2026 lesson was not a shortage of people; it was that some techniques had exactly one owner, so that person's exam week was that line's idle week.</li>
+          <li class="l-en">A record rota: one person a week turns that week into one page — date, purpose, materials, result, photographs, next step. It belongs in the staffing table, because 2026's notebook was rebuilt in October out of chat logs and slide decks, and that rebuild cost more hours than a season of rota would have.</li>
+          <li class="l-en">Biosafety: this project sits inside BSL-1. Containment is physical — a 0.2 µm pore against a 0.25–1.0 µm cell — not genetic, so no kill-switch escape-rate argument is needed.</li>
+        </ul>
+
+        <div class="box box--note">
+          <h5><span class="l-zh">後來</span><span class="l-en">What happened</span></h5>
+          <p class="l-zh">資本那一側估得很準，2026 的硬體總成本落在原型約 NT$83,028（約 US$2,800）。借用那一側也成立。真正偏掉的是「同型批次 × 3」的耗材成本從未被編進去，於是 M6 永遠是 n＝1。另外，反應器料件清單後來發現漏了幾項（主控板、鹼液泵、攪拌子），這是二月清單不夠細的直接結果。</p>
+          <p class="l-en">The capital side was estimated well: 2026's hardware came in at about NT$83,028 (roughly US$2,800) for the prototype. The borrowing side held. What went wrong is that the consumable cost of "three runs of the same kind" never entered the budget, so M6 stayed at n = 1. The reactor's parts list also turned out to be missing items — the mainboard, the base pump, the stir bar — a direct consequence of a February list that was not itemised finely enough.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============================================== PHASE Ⅲ ============ -->
+    <section class="panel" id="p3" role="tabpanel" aria-labelledby="t3" hidden>
+
+      <!-- G7 -->
+      <article class="gate ph-3" id="g7">
+        <div class="gate__top">
+          <span class="gate__id">G7</span>
+          <h3 class="gate__name"><span class="l-zh">硬體與軟體範圍</span><span class="l-en">Hardware and software scope</span></h3>
+          <span class="gate__w">5 / 8</span>
+        </div>
+
+        <p class="l-zh">每一台儀器一行，答「少了它哪一列量測做不到」。答不出來的那一行，二月就要刪掉。</p>
+        <p class="l-en">One line per instrument, answering which measurement is impossible without it. The lines with no answer get deleted in February.</p>
+
+        <div class="tw">
+          <table>
+            <thead><tr>
+              <th><span class="l-zh">硬體</span><span class="l-en">Hardware</span></th>
+              <th><span class="l-zh">少了它哪一列做不到</span><span class="l-en">Which row dies without it</span></th>
+              <th><span class="l-zh">驗證路徑</span><span class="l-en">Validation route</span></th>
+              <th class="nowrap"><span class="l-zh">二月裁決</span><span class="l-en">February verdict</span></th>
+            </tr></thead>
+            <tbody>
+              <tr><td><b><span class="l-zh">灌流反應器</span><span class="l-en">Perfusion reactor</span></b></td>
+                  <td>M3, M6</td>
+                  <td><span class="l-zh">壓差對流量的曲線；透膜側塗盤；兩側同批蛋白比對</span><span class="l-en">pressure-drop against flow; permeate plating; protein on both sides of one run</span></td>
+                  <td><span class="pill pill--go"><span class="l-zh">做</span><span class="l-en">build</span></span></td></tr>
+              <tr><td><b><span class="l-zh">管線內光度計</span><span class="l-en">In-line photometer</span></b></td>
+                  <td>M6</td>
+                  <td><span class="l-zh">兩種獨立質量標準品（二氧化鈦、二氧化矽），與商用台式機做斜率與截距檢定</span><span class="l-en">two independent mass standards, titanium and silicon dioxide, with a slope-and-intercept test against a commercial benchtop</span></td>
+                  <td><span class="pill pill--go"><span class="l-zh">做</span><span class="l-en">build</span></span></td></tr>
+              <tr><td><b><span class="l-zh">光板</span><span class="l-en">Light plate</span></b></td>
+                  <td>M4</td>
+                  <td><span class="l-zh">逐顆 LED 光強量測後配對；<b>孔間漏光測試</b></span><span class="l-en">per-LED intensity measured then matched; <b>a between-well light-leak test</b></span></td>
+                  <td><span class="pill pill--go"><span class="l-zh">做</span><span class="l-en">build</span></span></td></tr>
+              <tr><td><span class="l-zh">簡化版光度計</span><span class="l-en">Slim photometer</span></td>
+                  <td><span class="l-zh">無——它是可複製性證據，不是量測工具</span><span class="l-en">none — it is reproducibility evidence, not a measurement tool</span></td>
+                  <td><span class="l-zh">外部人照指南自建</span><span class="l-en">outsiders build it from the guide</span></td>
+                  <td><span class="pill pill--hold"><span class="l-zh">只為獎項而做，排在八月</span><span class="l-en">for the prize only, scheduled August</span></span></td></tr>
+              <tr style="background:var(--rust-100)"><td><span class="l-zh">水耕浮板</span><span class="l-en">Floating hydroponics plate</span></td>
+                  <td><span class="l-zh">無</span><span class="l-en">none</span></td>
+                  <td><span class="l-zh">乾舷預測從未在實際列印件上量過</span><span class="l-en">the freeboard prediction was never measured on a printed part</span></td>
+                  <td><span class="pill pill--kill"><span class="l-zh">二月就該砍</span><span class="l-en">cut in February</span></span></td></tr>
+              <tr style="background:var(--rust-100)"><td><span class="l-zh">額外感測器（溶氧、溫度、液位）</span><span class="l-en">Extra sensors: dissolved oxygen, temperature, level</span></td>
+                  <td><span class="l-zh">無——沒有任何一列量測需要它們</span><span class="l-en">none — no row needs them</span></td>
+                  <td>—</td>
+                  <td><span class="pill pill--kill"><span class="l-zh">不裝；裝了而沒測會變成頁面上的負債</span><span class="l-en">do not fit; fitted-and-untested becomes a liability on the page</span></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box box--flag">
+          <h5><span class="l-zh">「裝了」不等於「測了」</span><span class="l-en">Fitted is not tested</span></h5>
+          <p class="l-zh">2026 的反應器上裝了溶氧探針（無法維持校正）、迴路溫度探針（無回應）、而且沒有液位感測。這三項在十月都必須寫成「裝了但未測」或「不響應」。一個零件如果不服務任何一列量測，它在二月就是負分項：裝上去要花錢與時間，而且會在頁面上留下一句必須誠實交代的話。</p>
+          <p class="l-en">The 2026 reactor carried a dissolved-oxygen probe that would not hold calibration, a loop temperature probe that did not respond, and no level sensing at all. All three had to be written up in October as fitted-and-untested or not responding. A component that serves no row of the measurement table is a negative in February: it costs money and time to fit, and it leaves a sentence on the page that has to be owned up to.</p>
+        </div>
+
+        <h4><span class="l-zh">軟體：它在實驗之前產出什麼預測</span><span class="l-en">Software: which prediction does it make before the experiment</span></h4>
+        <div class="cards cards--2">
+          <div class="card card--leaf">
+            <p class="card__k"><span class="l-zh">算分的軟體</span><span class="l-en">Software that scores</span></p>
+            <ul>
+              <li class="l-zh"><b>韌體層的安全連鎖</b>：壓力超過門檻就停泵並閂鎖，重開機不會讓泵在無人的房間裡重啟。這是硬體能連續運轉數日的前提。</li>
+              <li class="l-zh"><b>預先登記的生長率與訊號處理</b>：在量測之前把預期值寫進版本控制，然後用實跑的數據檢驗。推翻自己的那幾項，就是最強的證據。</li>
+              <li class="l-zh"><b>預測與異常偵測</b>：在失效之前指出感測器要壞了。</li>
+              <li class="l-en"><b>Interlocks in firmware.</b> Over the pressure threshold, both pumps stop and the fault latches, so a reboot cannot restart a pump in an empty room. This is what lets the hardware run unattended for days.</li>
+              <li class="l-en"><b>Pre-registered growth rate and signal processing.</b> Expected values committed to version control before the measurement, then tested against what the runs returned. The predictions that were overturned are the strongest evidence of all.</li>
+              <li class="l-en"><b>Forecasting and anomaly detection.</b> Saying a sensor is about to fail before it fails.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <p class="card__k"><span class="l-zh">不算分的軟體</span><span class="l-en">Software that does not score</span></p>
+            <ul>
+              <li class="l-zh">把已經有的結果畫得好看的儀表板。</li>
+              <li class="l-zh">只在錄好的數據上事後跑的模型。2026 的所有模型都是事後在錄製資料上跑的，頁面必須如實寫出這一點。</li>
+              <li class="l-zh">使用者介面做得很完整，但沒有任何使用者試用過。</li>
+              <li class="l-en">A dashboard that draws results you already have.</li>
+              <li class="l-en">A model that only ever runs on recorded data after the fact. Every 2026 model did, and the page had to say so.</li>
+              <li class="l-en">A polished user interface no user has tried.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="box box--note">
+          <h5><span class="l-zh">後來</span><span class="l-en">What happened</span></h5>
+          <p class="l-zh">韌體連鎖與預先登記兩項都兌現，並且撐起了量測類的論證：434 小時的管線內 OD 紀錄、以及異常偵測在 OD 通道失效前 26.7 小時就標記出參考通道。水耕板與多餘感測器則如上表所述，變成要在頁面上交代的項目。硬體一共做了四台加一個水耕板，比這套架構建議的「三台」多，而多出來的那些正是後來留下負債的那些。</p>
+          <p class="l-en">The interlocks and the pre-registration were both delivered, and they carried the measurement argument: a 434-hour in-line OD record, and anomaly detection that flagged the reference channel 26.7 hours before the OD channel failed. The hydroponics plate and the spare sensors became the items the pages had to account for. Four instruments plus the plate were built, against this framework's suggested three — and the extras are precisely the ones that left debts.</p>
+        </div>
+      </article>
+
+      <!-- G8 -->
+      <article class="gate ph-3" id="g8">
+        <div class="gate__top">
+          <span class="gate__id">G8</span>
+          <h3 class="gate__name"><span class="l-zh">人文實踐與法規</span><span class="l-en">Practices and regulation</span></h3>
+          <span class="gate__w">7 / 7</span>
+        </div>
+
+        <h4><span class="l-zh">我們自己答不出來的三個問題</span><span class="l-en">The three questions we cannot answer ourselves</span></h4>
+        <ol>
+          <li class="l-zh"><b>工程菌可以進土壤嗎？</b>　如果不行，整個架構必須從「在根圈定殖的菌」改成「密閉容器加膜」。這一題要問農藝與植微領域的研究者。</li>
+          <li class="l-zh"><b>哪一種植物模式才量得準？</b>　要問做植物逆境的實驗室：用哪個物種、哪個生長階段、固體培養基還是水耕、怎麼標準化苗齡。</li>
+          <li class="l-zh"><b>誰會買，以什麼形式買？</b>　要問農民、產銷班或合作社：一台機器賣給一個農場，還是一個合作社共用、按公頃計價。</li>
+          <li class="l-en"><b>Can engineered cells go into soil?</b> If not, the architecture has to move from bacteria colonising the rhizosphere to a contained vessel with a membrane. Ask agronomy and plant-microbe researchers.</li>
+          <li class="l-en"><b>Which plant model actually measures?</b> Ask a plant-stress laboratory: which species, which growth stage, agar or hydroponics, and how seedling age gets standardised.</li>
+          <li class="l-en"><b>Who buys it, and in what form?</b> Ask farmers and growers' collectives: one machine sold to one farm, or one shared asset priced per hectare.</li>
+        </ol>
+
+        <h4><span class="l-zh">法規路徑：類別選擇是設計決定</span><span class="l-en">The regulatory route: the category is a design decision</span></h4>
+        <div class="shift">
+          <div class="shift__col">
+            <h6><span class="l-zh">生物農藥路線</span><span class="l-en">As a biopesticide</span></h6>
+            <ul>
+              <li class="l-zh">審查約 3–5 年</li>
+              <li class="l-zh">可以主張防治病蟲害</li>
+              <li class="l-zh">這一季不可能走到田間試驗</li>
+              <li class="l-en">review of roughly 3–5 years</li>
+              <li class="l-en">may claim pest and disease control</li>
+              <li class="l-en">a field trial is out of reach this season</li>
+            </ul>
+          </div>
+          <div class="shift__a">→</div>
+          <div class="shift__col shift__col--to">
+            <h6><span class="l-zh">生物刺激素／肥料路線</span><span class="l-en">As a biostimulant or fertiliser</span></h6>
+            <ul>
+              <li class="l-zh">約 30 天</li>
+              <li class="l-zh">只能主張逆境耐受與生長，不能主張防治</li>
+              <li class="l-zh">這決定了所有植物實驗的終點指標是根長與鮮重，不是病害分數</li>
+              <li class="l-en">about 30 days</li>
+              <li class="l-en">may claim stress tolerance and growth, not control of pests</li>
+              <li class="l-en">this sets every plant endpoint as root length and fresh weight, not a disease score</li>
+            </ul>
+          </div>
+        </div>
+        <p class="l-zh" style="margin-top:1rem">這是二月定案時最被低估的一個決定：選了生物刺激素，植物實驗的終點指標就定了，而終點指標決定了要種幾盤、量什麼、n 多少。法規欄不是寫給評審看的附錄，它往回決定了濕實驗的設計。</p>
+        <p class="l-en" style="margin-top:1rem">This is the most underrated decision in a February commitment: choosing biostimulant fixes the plant endpoints, and the endpoints fix how many plates to sow, what to measure and at what n. The regulation column is not an appendix for judges. It reaches back and sets the wet lab's design.</p>
+
+        <div class="box box--note">
+          <h5><span class="l-zh">後來</span><span class="l-en">What happened</span></h5>
+          <p class="l-zh">這一道門是 2026 做得最好的。三十一位對話者在七個月裡真的改掉了設計，而且每一次改動都能指名日期與那句話：底盤換了、圍堵從自殺基因改成物理膜、植物模式從水耕換成固體培養基再到土壤、作物從水稻換成番茄、商業模式從賣一台機器變成按公頃計價的共用資產。這正是「對話改了什麼」而不是「我們訪談了誰」。</p>
+          <p class="l-en">This is the gate 2026 did best. Thirty-one people over seven months genuinely changed the design, and every change can be named with its date and its sentence: the chassis changed, containment moved from a kill switch to a physical membrane, the plant model moved from hydroponics to agar and then to soil, the crop changed from rice to tomato, and the business model moved from selling a machine to a shared asset priced per hectare. That is what "the conversation changed something" looks like, as opposed to a list of people interviewed.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============================================== PHASE Ⅳ ============ -->
+    <section class="panel" id="p4" role="tabpanel" aria-labelledby="t4" hidden>
+
+      <!-- G9 -->
+      <article class="gate ph-4" id="g9">
+        <div class="gate__top">
+          <span class="gate__id">G9</span>
+          <h3 class="gate__name"><span class="l-zh">風險與停損</span><span class="l-en">Risk and kill criteria</span></h3>
+          <span class="gate__w">4 / 8</span>
+        </div>
+
+        <div class="tw">
+          <table>
+            <thead><tr>
+              <th><span class="l-zh">風險</span><span class="l-en">Risk</span></th>
+              <th class="nowrap"><span class="l-zh">機率</span><span class="l-en">Odds</span></th>
+              <th><span class="l-zh">解決它的實驗</span><span class="l-en">The experiment that resolves it</span></th>
+              <th class="nowrap"><span class="l-zh">日期</span><span class="l-en">Date</span></th>
+              <th><span class="l-zh">失敗後</span><span class="l-en">If it fails</span></th>
+            </tr></thead>
+            <tbody>
+              <tr><td><span class="l-zh">蛋白分泌不出來，或分泌後被切壞</span><span class="l-en">The protein is not secreted, or is cleaved on the way out</span></td>
+                  <td><span class="l-zh">中</span><span class="l-en">medium</span></td>
+                  <td><span class="l-zh">兩種訊號肽並列 ＋ 培養液西方墨點</span><span class="l-en">two signal peptides side by side, plus a supernatant blot</span></td>
+                  <td class="nowrap"><span class="l-zh">4 月底</span><span class="l-en">end Apr</span></td>
+                  <td><span class="l-zh">改走胞內表現 ＋ 破菌，題目從「分泌到透膜液」變成「胞內生產 ＋ 下游純化」</span><span class="l-en">switch to intracellular expression with lysis; the project becomes production plus downstream, not secretion into a permeate</span></td></tr>
+              <tr style="background:var(--amber-100)"><td><span class="l-zh">綠光在高濁度培養中穿不進去，或動態範圍太小</span><span class="l-en">Green light does not penetrate a dense culture, or the dynamic range is too small</span></td>
+                  <td><span class="l-zh">高</span><span class="l-en">high</span></td>
+                  <td><span class="l-zh">光板上綠／紅／暗三組，n＝3，含孔間漏光測試</span><span class="l-en">green, red and dark on the light plate, n = 3, with a light-leak test</span></td>
+                  <td class="nowrap"><span class="l-zh">3 月底</span><span class="l-en">end Mar</span></td>
+                  <td><span class="l-zh">改成組成型生產平台，把光控降級為「已測試、未整合」的模組，並且在所有對外材料中一致地這樣說</span><span class="l-en">become a constitutive production platform and demote light control to a tested-but-not-integrated module, said that way in every outward-facing document</span></td></tr>
+              <tr><td><span class="l-zh">膜結垢使批次撐不到 72 小時</span><span class="l-en">Fouling stops a run short of 72 hours</span></td>
+                  <td><span class="l-zh">中</span><span class="l-en">medium</span></td>
+                  <td><span class="l-zh">壓差隨時間的趨勢 ＋ 透水率衰減</span><span class="l-en">pressure drop over time, with permeability decay</span></td>
+                  <td class="nowrap"><span class="l-zh">6 月</span><span class="l-en">Jun</span></td>
+                  <td><span class="l-zh">縮短單批長度並多做批次；模組改為耗材，一季編 2 個</span><span class="l-en">shorten runs and do more of them; treat the module as a consumable, two per season</span></td></tr>
+              <tr><td><span class="l-zh">植物效果來自培養液成分，不是蛋白</span><span class="l-en">The plant effect comes from the medium, not the protein</span></td>
+                  <td><span class="l-zh">高</span><span class="l-en">high</span></td>
+                  <td><span class="l-zh">無細胞培養液對照 ＋ 熱滅活透膜液對照，與處理組同盤</span><span class="l-en">cell-free medium and heat-killed permeate controls, on the same plates as the treatment</span></td>
+                  <td class="nowrap"><span class="l-zh">7 月</span><span class="l-en">Jul</span></td>
+                  <td><span class="l-zh">主張降級為「透膜液改善逆境表現」，不主張機制</span><span class="l-en">demote the claim to "the permeate improves performance under stress" and claim no mechanism</span></td></tr>
+              <tr><td><span class="l-zh">借用的微量盤判讀儀排不到時段</span><span class="l-en">No slots on the borrowed plate reader</span></td>
+                  <td><span class="l-zh">低</span><span class="l-en">low</span></td>
+                  <td><span class="l-zh">二月取得書面時段，暑假整月預約</span><span class="l-en">written slots in February, the whole summer booked</span></td>
+                  <td class="nowrap"><span class="l-zh">2 月</span><span class="l-en">Feb</span></td>
+                  <td><span class="l-zh">改用比色法為主、ELISA 為輔，接受較差的靈敏度</span><span class="l-en">lead with the colorimetric assay and use ELISA sparingly, accepting worse sensitivity</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4><span class="l-zh">三個停損條件</span><span class="l-en">Three kill criteria</span></h4>
+        <div class="box box--flag">
+          <h5><span class="l-zh">各帶日期與數字門檻</span><span class="l-en">Each with a date and a numeric threshold</span></h5>
+          <ol>
+            <li class="l-zh"><b>4 月 30 日</b>　若培養液中仍無法在 ELISA 與西方墨點上同時偵測到任一目標蛋白，放棄分泌路線，改走胞內表現。</li>
+            <li class="l-zh"><b>3 月 31 日</b>　若綠／紅表現比在 n＝3 下低於 2，光控降級為模組，整季敘述改寫，並且不再把它放在簡報第一頁。</li>
+            <li class="l-zh"><b>7 月 31 日</b>　若透膜液與無細胞培養液對幼苗的效果在 n＝9 下無法區分，植物那一節改寫為方法學貢獻（一套可重複的逆境定量流程），不主張蛋白的功效。</li>
+            <li class="l-en"><b>30 April.</b> If no target protein is detectable in the supernatant by both ELISA and blot, abandon secretion and move to intracellular expression.</li>
+            <li class="l-en"><b>31 March.</b> If the green-to-red expression ratio is below 2 at n = 3, demote light control to a module, rewrite the season's account, and take it off the first slide.</li>
+            <li class="l-en"><b>31 July.</b> If permeate and cell-free medium cannot be distinguished on seedlings at n = 9, rewrite the plant link as a methodological contribution — a repeatable stress-quantification protocol — and claim no efficacy for the protein.</li>
+          </ol>
+        </div>
+
+        <h4><span class="l-zh">縮小版題目</span><span class="l-en">The de-scoped version</span></h4>
+        <p class="l-zh">只剩一半時間與一半資源時的最小可交付版本：<b>一台管線內 OD600 光度計，完整校正、完整驗證、附組裝指南與料件清單，以及一條用它記錄的連續灌流培養曲線。</b>這個版本沒有光控、沒有植物、沒有法規論述，但它是一個完整、誠實、可複製的成果，而且它是 2026 最強的那一塊。知道縮小版是什麼，就敢把關鍵實驗排在前面。</p>
+        <p class="l-en">With half the time and half the resources, the minimum deliverable is: <b>one in-line OD600 photometer, fully calibrated and validated, with an assembly guide and a costed parts list, plus one continuous perfusion growth curve recorded with it.</b> No light control, no plants, no regulatory argument — and a complete, honest, reproducible result, which is also the strongest thing 2026 produced. Knowing what the de-scoped version is gives you the nerve to schedule the decisive experiment first.</p>
+
+        <div class="box box--note">
+          <h5><span class="l-zh">後來</span><span class="l-en">What happened</span></h5>
+          <p class="l-zh">2026 沒有寫停損條件，也因此沒有在三月問光控那一題。整季的結果是：縮小版（光度計與量測）無意間變成最強的那一塊，而招牌（光控）變成最弱的那一塊。這個排序如果在二月就被看見，簡報的第一頁會不一樣。</p>
+          <p class="l-en">2026 wrote no kill criteria, and so never put the light question in March. The season ended with the de-scoped version — the photometer and the measurement work — as the strongest piece, and the headline, light control, as the weakest. Had that ordering been visible in February, the first slide would have been a different slide.</p>
+        </div>
+      </article>
+
+      <!-- G10 -->
+      <article class="gate ph-4" id="g10">
+        <div class="gate__top">
+          <span class="gate__id">G10</span>
+          <h3 class="gate__name"><span class="l-zh">里程碑、獎項、論文</span><span class="l-en">Milestones, prizes, paper</span></h3>
+          <span class="gate__w">5 / 7</span>
+        </div>
+
+        <h4><span class="l-zh">四個 go／no-go</span><span class="l-en">The four go/no-go dates</span></h4>
+        <ul class="tl tl--gate">
+          <li>
+            <p class="tl__when"><span class="l-zh">3 月 31 日</span><span class="l-en">31 March</span></p>
+            <p class="tl__what"><span class="l-zh">光控閘門</span><span class="l-en">The light gate</span></p>
+            <p class="l-zh">通過條件：綠／紅表現比 ≥ 2，n＝3，孔間漏光已排除。不通過就降級，並改寫所有對外說法。</p>
+            <p class="l-en">Pass condition: a green-to-red ratio of 2 or more at n = 3, with between-well light leak ruled out. Fail means demotion, and every outward-facing sentence gets rewritten.</p>
+          </li>
+          <li>
+            <p class="tl__when"><span class="l-zh">4 月 30 日</span><span class="l-en">30 April</span></p>
+            <p class="tl__what"><span class="l-zh">分泌閘門</span><span class="l-en">The secretion gate</span></p>
+            <p class="l-zh">通過條件：至少一個蛋白在培養液中以兩種方法同時可偵測。這是真正的單點失敗。</p>
+            <p class="l-en">Pass condition: at least one protein detectable in the supernatant by two methods. This is the true single point of failure.</p>
+          </li>
+          <li>
+            <p class="tl__when"><span class="l-zh">6 月 30 日</span><span class="l-en">30 June</span></p>
+            <p class="tl__what"><span class="l-zh">分離閘門</span><span class="l-en">The separation gate</span></p>
+            <p class="l-zh">通過條件：同一批次的透膜側有蛋白、塗盤無菌落，並且批次撐過 72 小時。</p>
+            <p class="l-en">Pass condition: in one run, protein on the permeate side, no colonies on the plate, and the run holds past 72 hours.</p>
+          </li>
+          <li>
+            <p class="tl__when"><span class="l-zh">8 月 31 日</span><span class="l-en">31 August</span></p>
+            <p class="tl__what"><span class="l-zh">凍結前閘門</span><span class="l-en">The pre-freeze gate</span></p>
+            <p class="l-zh">通過條件：G5 六列中至少四列達到承諾的 n。沒達到的那幾列，從這天起停止做新實驗，改為寫清楚它們為什麼沒達到。</p>
+            <p class="l-en">Pass condition: at least four of the six G5 rows have reached their promised n. From this date the rows that did not stop collecting and start explaining why.</p>
+          </li>
+        </ul>
+
+        <h4><span class="l-zh">三個特別獎名額，以及為什麼只有三個</span><span class="l-en">The three Special Award slots, and why there are only three</span></h4>
+        <p class="l-zh">2026 年的規則：一隊最多申請三個特別獎，三個之中至少一個來自 General Bio Engineering 類、至少一個來自 Specializations 類，而這三個就是金牌的條件——三個都要達到評分門檻才拿金牌，選不滿三個直接沒有金牌。所以「挑三個」不是策略建議，是規則。下面是 ReLEAF 的工作最該放的三個名額。</p>
+        <p class="l-en">The 2026 rule: a team applies for at most three Special Awards, at least one from General Bio Engineering and at least one from Specializations, and those three <em>are</em> the Gold criterion — all three must meet the performance standard, and selecting fewer than three means no Gold at all. So picking three is not strategy, it is the rule. Below are the three slots ReLEAF's work belongs in.</p>
+
+        <div class="tw">
+          <table>
+            <thead><tr>
+              <th><span class="l-zh">名額</span><span class="l-en">Slot</span></th>
+              <th><span class="l-zh">它要我們在二月就決定的事</span><span class="l-en">What it makes you decide in February</span></th>
+              <th><span class="l-zh">十月要交出的證據</span><span class="l-en">The evidence October hands over</span></th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td><b>Best Measurement</b><small>General Bio Engineering · <span class="l-zh">最強的一個</span><span class="l-en">the strongest fit</span></small></td>
+                <td><span class="l-zh">買兩種獨立質量標準品；在量測前把預期值寫進版本控制；每個數字都要有校正來源與對照</span><span class="l-en">buy two independent mass standards; commit expected values to version control before measuring; give every number a calibration source and a control</span></td>
+                <td><span class="l-zh">與商用儀器的斜率與截距檢定、推翻自己的預先登記結果、原始數據與重算腳本、別人照著做得出來的協定</span><span class="l-en">a slope-and-intercept test against a commercial instrument, pre-registered predictions overturned by your own data, raw data with replay scripts, and a protocol others can follow</span></td>
+              </tr>
+              <tr>
+                <td><b>Best Hardware</b><small>Specializations</small></td>
+                <td><span class="l-zh">每台儀器從第一天就有組裝指南、料件清單與價格；找兩位外部人照指南自建</span><span class="l-en">every instrument ships with an assembly guide, a costed parts list and a price from day one; find two outsiders to build one from the guide</span></td>
+                <td><span class="l-zh">三台以內、每台都有驗證數據與完整料件清單；外部自建的紀錄；使用者手冊</span><span class="l-en">three instruments at most, each with validation data and a complete parts list; a record of the outside builds; a user manual</span></td>
+              </tr>
+              <tr>
+                <td><b>Best Integrated Human Practices</b><small>Specializations</small></td>
+                <td><span class="l-zh">每場對話留下「他說了什麼／我們改了什麼」兩行；把改動寫進設計紀錄而不是訪談紀錄</span><span class="l-en">every conversation leaves two lines, what they said and what you changed; the change goes into the design record, not the interview log</span></td>
+                <td><span class="l-zh">五到六個可指名日期的設計轉折，每個都能追到一個人與一句話</span><span class="l-en">five or six design turns with dates, each traceable to a person and a sentence</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box box--note">
+          <h5><span class="l-zh">這個配置的三個理由，以及一個排除</span><span class="l-en">Three reasons for this allocation, and one exclusion</span></h5>
+          <ul>
+            <li class="l-zh"><b>跨兩類成立。</b>Best Measurement 在 GBE 類，另兩個在 Specializations 類，金牌的跨類要求滿足。</li>
+            <li class="l-zh"><b>第二個 GBE 選項是 Best Part Collection。</b>ReLEAF 最後做到 35 個 Registry 登錄、五個可互換模組，條件接近。但零件類的獎要求文件寫在 Registry 上、集合要有集合層級文件，而那是一整季的文件工作——要搶這個名額，二月就要把它排進人力表，不能十月才想。</li>
+            <li class="l-zh"><b>不要碰 Best Alternative Platform。</b>它的底盤明確排除 <i>E. coli</i>、<i>S. cerevisiae</i> 與 <i>B. subtilis</i>，而 ReLEAF 的底盤正是 <i>B. subtilis</i>。花一個名額在不符資格的獎上，等於放棄金牌。</li>
+            <li class="l-zh"><b>Best Wiki 與 Best Presentation 不占名額。</b>全隊自動納入評分，不用申請，而且分數同時計入 Project Awards。這表示 wiki 與簡報的品質同時影響村落獎與大獎排名，不是額外的加分項。</li>
+            <li class="l-en"><b>It spans both categories.</b> Best Measurement sits in General Bio Engineering and the other two in Specializations, which satisfies Gold's cross-category requirement.</li>
+            <li class="l-en"><b>The second GBE option is Best Part Collection.</b> ReLEAF ended with 35 Registry entries across five interchangeable modules, which is close to qualifying. But the part awards require documentation on the Registry, and a collection needs collection-level documentation on top of the part pages — a season of writing. To take that slot, February has to put it in the staffing table, not October.</li>
+            <li class="l-en"><b>Do not touch Best Alternative Platform.</b> It explicitly excludes <i>E. coli</i>, <i>S. cerevisiae</i> and <i>B. subtilis</i> as chassis, and ReLEAF's chassis is <i>B. subtilis</i>. Spending a slot on an award you are ineligible for forfeits Gold.</li>
+            <li class="l-en"><b>Best Wiki and Best Presentation cost no slot.</b> Every team is scored on them without applying, and those scores also feed the Project Awards. So wiki and presentation quality moves the Village and Grand Prize ranking as well; it is not a side bonus.</li>
+          </ul>
+        </div>
+
+        <div class="box box--warn">
+          <h5><span class="l-zh">高中隊伍的村落獎是併組計算的</span><span class="l-en">High-school Village Awards are grouped</span></h5>
+          <p class="l-zh">2026 年高中組的村落獎按四個併組發放，Biomanufacturing 與 Foundational Advance、Software &amp; AI、Space 同屬第四組。也就是說 ReLEAF 的競爭對手不只是其他做生物製造的高中隊，而是整個第四組裡分數最高的那一隊。這會影響二月的敘述重心：在這一組裡，「做出一台可驗證的儀器」比「主題很重要」更容易拉開差距。</p>
+          <p class="l-en">In 2026 the high-school Village Awards go by four combined groups, with Biomanufacturing sitting alongside Foundational Advance, Software &amp; AI and Space in group four. ReLEAF's competition is therefore not only other high-school biomanufacturing teams but the highest-scoring team in that whole group. That shifts February's emphasis: inside this group, a validated instrument separates you further than an important topic does.</p>
+        </div>
+
+        <h4><span class="l-zh">論文：新意那一句話</span><span class="l-en">The paper: the novelty sentence</span></h4>
+        <div class="card card--white">
+          <p class="l-zh" style="font-size:1.0625rem;font-weight:550;color:var(--leaf-900);max-width:52ch"><b>一台成本約 US$372 的管線內 OD600 光度計，其訊號處理在量測之前就被預先登記，並在真實的連續灌流培養中被自己的數據推翻五項預測；我們報告那五項失敗、修正後的閘門設計，以及由此得到的 434 小時無取樣濁度紀錄。</b></p>
+          <p class="l-en" style="font-size:1.0625rem;font-weight:550;color:var(--leaf-900);max-width:56ch"><b>An in-line OD600 photometer costing about US$372, whose signal processing was pre-registered before measurement and then had five of its predictions overturned by its own data in a real continuous perfusion culture; we report those five failures, the gate redesign they forced, and the 434-hour sample-free turbidity record that followed.</b></p>
+          <p class="l-zh" style="margin-top:1rem"><b>種類</b>：新方法。這是四種新意形狀裡高中隊伍最容易拿到的一種，因為它不需要新的生物學，只需要紀律。</p>
+          <p class="l-en" style="margin-top:1rem"><b>Kind:</b> a new method. Of the four novelty shapes this is the one a high-school team reaches most easily, because it needs no new biology, only discipline.</p>
+          <p class="l-zh"><b>四到六張圖的清單</b>：(1) 光學配置與反射率校正曲線；(2) 兩種質量標準品下與商用儀器的一致性，含斜率與截距檢定；(3) 預先登記的八項預測與實測結果對照；(4) 氣泡閘門開與關的誤差對比；(5) 434 小時連續紀錄，標出異常偵測早於失效的那個時點；(6) 外部自建版本的一致性。這份清單同時就是最低要完成的實驗清單。</p>
+          <p class="l-en"><b>The four-to-six figure list:</b> (1) the optical layout and the reflectance calibration curve; (2) agreement with a commercial instrument on two mass standards, with the slope-and-intercept test; (3) the eight pre-registered predictions against what was measured; (4) error with the bubble gate on and off; (5) the 434-hour record with the point where anomaly detection preceded failure; (6) agreement for the outside-built version. That list is also the minimum experiment list.</p>
+        </div>
+
+        <h4><span class="l-zh">每個數字一個主人</span><span class="l-en">One number, one owner</span></h4>
+        <p class="l-zh">2026 有同一台硬體在兩頁上有兩個價錢，兩個都站得住，因為沒有人是那個數字的主人。二月就要指定：硬體成本、每公頃劑量、單位產量、菌株名稱、各自一位主人、一個來源檔案。所有頁面只能從那個檔案取數。</p>
+        <p class="l-en">In 2026 the same hardware carried two prices on two pages, both defensible, because nobody owned the number. February assigns owners: hardware cost, dose per hectare, output per unit, strain name — one owner and one source file each. Every page draws from that file and nowhere else.</p>
+
+        <div class="box box--note">
+          <h5><span class="l-zh">後來</span><span class="l-en">What happened</span></h5>
+          <p class="l-zh">獎項那一側兌現得很好：量測、硬體、人文三個方向都有可以站得住的證據，而且零件那一項做到 35 個 Registry 登錄、五個可互換模組。論文那一句話事後回看也成立。沒做到的是數字主人：硬體價格、菌株名稱（WB800 與 WB800N 混用）、反應器產出區間（2.5–8.5 與 3.4–6.5 兩種說法）都在不同頁面上有不同版本，最後要靠一份判讀準備文件把它們統一。那份文件如果是二月的一張表，就不需要在十月寫。</p>
+          <p class="l-en">The prize side came through: measurement, hardware and human practices all have evidence that stands up, and the parts work reached 35 Registry entries across five interchangeable modules. The novelty sentence holds up in hindsight too. What did not come through is number ownership: the hardware price, the strain name (WB800 and WB800N used interchangeably) and the reactor output window (quoted as both 2.5–8.5 and 3.4–6.5) each existed in more than one version across pages, and a judging-prep document had to reconcile them at the end. Had that document been a one-page table in February, October would not have had to write it.</p>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <!-- ===================================================== VERDICT ======== -->
+  <section class="sec" id="verdict" style="margin-top:var(--sp-8)">
+    <h2 class="bi"><span class="zh">把 ReLEAF 放回 PK 表</span><span class="en">ReLEAF put back through the scorecard</span></h2>
+
+    <p class="l-zh">用這套架構替 2026 年二月的 ReLEAF 打分，結果是 71 分。這個分數會通過定案，而且會通過得很清楚——但它也會在二月當場指出三件事：光控要排前面、M6 的對照批次要編預算、iGEM 前人表還沒做。</p>
+    <p class="l-en">Scoring ReLEAF as it would have stood in February 2026 gives 71. That passes, and passes clearly — and it would also have named three things on the spot: schedule the light gate first, budget M6's control run, and the prior-iGEM table does not exist yet.</p>
+
+    <div class="tw">
+      <table>
+        <thead><tr>
+          <th><span class="l-zh">門</span><span class="l-en">Gate</span></th>
+          <th class="num-c"><span class="l-zh">得分</span><span class="l-en">Score</span></th>
+          <th><span class="l-zh">扣分的原因</span><span class="l-en">Why the points came off</span></th>
+        </tr></thead>
+        <tbody>
+          <tr><td><b>G1</b> <span class="l-zh">主張</span><span class="l-en">Claim</span></td><td class="num-c">10 / 10</td><td><span class="l-zh">—</span><span class="l-en">—</span></td></tr>
+          <tr><td><b>G2</b> <span class="l-zh">前人與新意</span><span class="l-en">Prior art</span></td><td class="num-c">7 / 10</td><td><span class="l-zh">iGEM 前人表不存在</span><span class="l-en">no prior-iGEM table</span></td></tr>
+          <tr><td><b>G3</b> <span class="l-zh">影響與落地</span><span class="l-en">Impact</span></td><td class="num-c">7 / 8</td><td><span class="l-zh">產量的量級估算缺「每天多少」</span><span class="l-en">the output estimate has no per-day figure</span></td></tr>
+          <tr style="background:var(--rust-100)"><td><b>G4</b> <span class="l-zh">關鍵路徑</span><span class="l-en">Critical path</span></td><td class="num-c">9 / 15</td><td><span class="l-zh">招牌功能排在後面，沒有 go／no-go</span><span class="l-en">the headline function scheduled late, with no go/no-go</span></td></tr>
+          <tr style="background:var(--rust-100)"><td><b>G5</b> <span class="l-zh">量測計畫</span><span class="l-en">Measurement</span></td><td class="num-c">8 / 15</td><td><span class="l-zh">貴的那幾列沒有 n；M6 的對照批次沒編預算</span><span class="l-en">no n on the expensive rows; M6's control run unbudgeted</span></td></tr>
+          <tr><td><b>G6</b> <span class="l-zh">資源</span><span class="l-en">Resources</span></td><td class="num-c">10 / 12</td><td><span class="l-zh">料件清單不夠細；紀錄值班未編人力</span><span class="l-en">parts list not itemised; no record rota staffed</span></td></tr>
+          <tr><td><b>G7</b> <span class="l-zh">硬體軟體</span><span class="l-en">Hardware &amp; software</span></td><td class="num-c">5 / 8</td><td><span class="l-zh">兩項硬體不服務任何量測</span><span class="l-en">two hardware items serve no measurement</span></td></tr>
+          <tr><td><b>G8</b> <span class="l-zh">人文法規</span><span class="l-en">Practices &amp; law</span></td><td class="num-c">7 / 7</td><td><span class="l-zh">—</span><span class="l-en">—</span></td></tr>
+          <tr style="background:var(--rust-100)"><td><b>G9</b> <span class="l-zh">風險停損</span><span class="l-en">Risk &amp; kill</span></td><td class="num-c">4 / 8</td><td><span class="l-zh">沒有停損條件，沒有縮小版</span><span class="l-en">no kill criteria, no de-scoped version</span></td></tr>
+          <tr><td><b>G10</b> <span class="l-zh">收割</span><span class="l-en">Harvest</span></td><td class="num-c">5 / 7</td><td><span class="l-zh">數字沒有主人</span><span class="l-en">numbers without owners</span></td></tr>
+          <tr style="background:var(--leaf-50)"><td><b><span class="l-zh">合計</span><span class="l-en">Total</span></b></td><td class="num-c"><b>71 / 100</b></td>
+              <td><span class="l-zh">通過。四個扣最多分的地方（G4、G5、G9、G7）就是後來真正付代價的四個地方。</span><span class="l-en">Pass. The four gates that lost the most — G4, G5, G9, G7 — are the four that later cost the season.</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pull">
+      <p class="l-zh">這套架構不會挑出更好的題目。它只會讓同一個題目，在同樣的八個月裡，多拿到兩組有重複數的數據。</p>
+      <p class="l-en">This framework will not pick a better project. It makes the same project return two more data sets with replicates, out of the same eight months.</p>
+    </div>
+
+    <div class="idx">
+      <a href="../toolkit/#score">
+        <p class="k"><span class="l-zh">工具</span><span class="l-en">Toolkit</span></p>
+        <p class="t"><span class="l-zh">PK 評分表</span><span class="l-en">The PK scorecard</span></p>
+        <p class="d"><span class="l-zh">可印出來的 100 分表格，含戰線扣分與一句話加分。</span><span class="l-en">The printable 100-point sheet, with the breadth penalty and the one-sentence bonus.</span></p>
+      </a>
+      <a href="../toolkit/#feb">
+        <p class="k"><span class="l-zh">清單</span><span class="l-en">Checklist</span></p>
+        <p class="t"><span class="l-zh">二月門檻二十二項</span><span class="l-en">The twenty-two-item bar</span></p>
+        <p class="d"><span class="l-zh">定案那天桌上要有的東西，逐項打勾。</span><span class="l-en">What must be on the table on the day, item by item.</span></p>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot__in">
+    <p class="l-zh">範例資料來源：2026 年 ReLEAF 專案的公開 wiki（<a href="https://2026.igem.wiki/gems-taiwan/">2026.igem.wiki/gems-taiwan</a>）與團隊自己的判讀準備紀錄。所有「後來」欄位的數字都是事後量到的；二月提案的部分是為了這份教學文件重寫的，當年並不存在這樣一份文件。</p>
+    <p class="l-en">Sources for the example: the public 2026 ReLEAF wiki (<a href="https://2026.igem.wiki/gems-taiwan/">2026.igem.wiki/gems-taiwan</a>) and the team's own judging-prep record. Every number in a "what happened" box was measured after the fact. The February pitch itself was written for this teaching document; no such document existed at the time.</p>
+  </div>
+</footer>
+
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
