@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>里程碑 · The season chart — GEMS 2027 Pitch Framework</title>
+<meta name="description" content="An interactive season chart for an iGEM project: six tracks, four go/no-go gates, ten iGEM deadlines, and the dependency chain behind each one.">
+<link rel="stylesheet" href="../assets/css/app.css">
+<link rel="stylesheet" href="milestones.css">
+</head>
+<body class="page-ms">
+
+<header class="bar">
+  <div class="bar__in">
+    <a class="bar__home" href="../"><b>GEMS 2027</b> <i>Project Pitch Framework</i></a>
+    <nav class="bar__nav" aria-label="Sections">
+      <a href="../"><span class="l-zh">總覽</span><span class="l-en">Overview</span></a>
+      <a href="../framework/"><span class="l-zh">十道門</span><span class="l-en">The gates</span></a>
+      <a href="../releaf/"><span class="l-zh">ReLEAF 範例</span><span class="l-en">Example</span></a>
+      <a href="./" aria-current="page"><span class="l-zh">里程碑</span><span class="l-en">Season chart</span></a>
+      <a href="../toolkit/"><span class="l-zh">工具包</span><span class="l-en">Toolkit</span></a>
+      <a href="../brief/"><span class="l-zh">開跑包</span><span class="l-en">Kick-off</span></a>
+    </nav>
+    <button class="bar__lang" type="button" data-lang-btn>English</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__in">
+    <p class="eyebrow"><span class="l-zh">里程碑</span><span class="l-en">Season chart</span></p>
+    <h1 class="bi">
+      <span class="zh">一季全圖</span>
+      <span class="en">The whole season on one chart</span>
+    </h1>
+    <p class="hero__lede l-zh">六條工作線、四道自己的 go／no-go 閘門、十個 iGEM 繳交期限。點任何一條，會看到它交付什麼、完成或通過的條件、誰負責、它卡住什麼，以及它必須先有什麼——選中的那一條會把整條上游鏈一起亮起來。</p>
+    <p class="hero__lede l-en">Six tracks of work, four go/no-go gates the team owns, ten iGEM deadlines. Click any one of them for what it delivers, the condition that closes it, who owns it, what waits on it and what it cannot start without — selecting a row lights its whole upstream chain.</p>
+    <ul class="hero__meta">
+      <li><b><span class="l-zh">工作線</span><span class="l-en">Work items</span></b><span data-count="bar">—</span></li>
+      <li><b><span class="l-zh">閘門</span><span class="l-en">Gates</span></b><span data-count="gate">—</span></li>
+      <li><b><span class="l-zh">繳交期限</span><span class="l-en">Deadlines</span></b><span data-count="due">—</span></li>
+      <li><b><span class="l-zh">關鍵路徑上</span><span class="l-en">On the critical path</span></b><span data-count="crit">—</span></li>
+    </ul>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <div class="sec">
+    <div class="box box--warn">
+      <h5><span class="l-zh">日期的來源</span><span class="l-en">Where the dates come from</span></h5>
+      <p class="l-zh">iGEM 的十個期限是依 <b>2026 賽季的日期形狀</b>推估的，點開任何一個期限都會看到它對應的 2026 原始日期。2027 公布行事曆之後，把 <code>milestones.js</code> 最上方的日期換掉，整張圖會自己重畫。四道閘門與六條工作線的日期是這套架構建議的，不是 iGEM 規定的，隊伍可以自己調。</p>
+      <p class="l-en">The ten iGEM deadlines are estimated from <b>the 2026 season's shape</b>; open any one of them and it shows the 2026 date it came from. When the 2027 calendar is published, edit the dates at the top of <code>milestones.js</code> and the whole chart redraws. The four gates and the six tracks are this framework's suggestion, not iGEM's rule, and a team can move them.</p>
+    </div>
+  </div>
+
+  <div data-rail>
+    <div class="seg">
+      <div class="seg__track" role="tablist" aria-label="Views">
+        <button class="seg__btn" role="tab" type="button" id="t1" aria-controls="p1" aria-selected="true">
+          <span class="l-zh">一季全圖</span><span class="l-en">The chart</span></button>
+        <button class="seg__btn" role="tab" type="button" id="t2" aria-controls="p2" aria-selected="false">
+          <span class="l-zh">四道閘門</span><span class="l-en">The four gates</span></button>
+        <button class="seg__btn" role="tab" type="button" id="t3" aria-controls="p3" aria-selected="false">
+          <span class="l-zh">繳交日曆</span><span class="l-en">Deadlines</span></button>
+        <button class="seg__btn" role="tab" type="button" id="t4" aria-controls="p4" aria-selected="false">
+          <span class="l-zh">怎麼用</span><span class="l-en">How to use it</span></button>
+      </div>
+    </div>
+
+    <!-- ================================================= THE CHART ======= -->
+    <section class="panel" id="p1" role="tabpanel" aria-labelledby="t1">
+      <div id="filters" class="filters"></div>
+
+      <div class="chartwrap">
+        <div id="chart"></div>
+      </div>
+
+      <div class="legend">
+        <span><i class="sw"></i><span class="l-zh">一段工作（顏色是工作線）</span><span class="l-en">a stretch of work, coloured by track</span></span>
+        <span><i class="dm"></i><span class="l-zh">自己的 go／no-go 閘門</span><span class="l-en">a go/no-go gate the team owns</span></span>
+        <span><i class="ci"></i><span class="l-zh">iGEM 繳交期限</span><span class="l-en">an iGEM deadline</span></span>
+        <span><i class="dt0"></i><span class="l-zh">在關鍵路徑上</span><span class="l-en">on the critical path</span></span>
+      </div>
+      <p class="hint l-zh">點一下任何一條看細節，再點一次收起來，按 Esc 也可以。手機上圖是橫向捲動的，左邊的名稱欄會固定不動。</p>
+      <p class="hint l-en">Click any row for its detail, click it again or press Esc to close. On a phone the chart scrolls sideways and the label column stays put.</p>
+
+      <div id="detail" class="detail" hidden></div>
+    </section>
+
+    <!-- ================================================= GATES =========== -->
+    <section class="panel" id="p2" role="tabpanel" aria-labelledby="t2" hidden>
+      <div class="sec" style="margin-bottom:0">
+        <h2 class="bi"><span class="zh">四道閘門</span><span class="en">The four gates</span></h2>
+        <p class="l-zh">閘門的價值不在「通過」，在「不通過的時候有劇本」。有停損劇本的隊伍，才敢把關鍵實驗排在三月而不是九月。每一道閘門的「不通過就這樣做」都是縮小題目，不是放棄題目。</p>
+        <p class="l-en">A gate is not valuable because you pass it. It is valuable because failing it has a script. A team with a script dares to schedule the decisive experiment in March instead of September. Every "if it does not pass" below narrows the project; none of them abandons it.</p>
+      </div>
+      <div id="gatecards" class="gcards"></div>
+
+      <div class="sec" style="margin-top:var(--sp-7)">
+        <div class="box box--flag">
+          <h5><span class="l-zh">閘門日期是倒推出來的，不是平均分配的</span><span class="l-en">Gate dates are worked backwards, not spread evenly</span></h5>
+          <ul>
+            <li class="l-zh">閘門一排在三月底，因為「招牌功能不成立」這件事如果四月才知道，整季的對外說法已經講出去了——六月的村落與題目資訊就要公開寫下題目是什麼。</li>
+            <li class="l-zh">閘門二排在四月底，因為失敗後要走的備援路線本身還需要三到四個月。五月才發現，備援路線來不及。</li>
+            <li class="l-zh">閘門三排在六月底，因為整合之後才有東西可以拍八月的宣傳影片。</li>
+            <li class="l-zh">閘門四排在八月底，因為十月二十一日凍結，而九月要留給重做，不是留給開新線。</li>
+            <li class="l-en">Gate one sits at the end of March because learning in April that the headline does not hold is too late: the Village and project information deadline in June puts the project in writing, publicly.</li>
+            <li class="l-en">Gate two sits at the end of April because the fallback route itself needs three or four months. Discovered in May, the fallback does not fit.</li>
+            <li class="l-en">Gate three sits at the end of June because integration is what gives the August promotion video something to film.</li>
+            <li class="l-en">Gate four sits at the end of August because the freeze is 21 October, and September belongs to repeats rather than to new lines.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================= DEADLINES ======= -->
+    <section class="panel" id="p3" role="tabpanel" aria-labelledby="t3" hidden>
+      <div class="sec" style="margin-bottom:0">
+        <h2 class="bi"><span class="zh">繳交日曆</span><span class="en">The deliverable calendar</span></h2>
+        <p class="l-zh">每一項指定一個負責人。2026 年所有繳交期限都在當日 15:00 UTC（台灣時間 23:00）截止，官方寫明不接受延期。</p>
+        <p class="l-en">Each one gets an owner. In 2026 every deliverable closed at 15:00 UTC on its date, 23:00 Taiwan time, and the rules state that extensions are not allowed.</p>
+      </div>
+      <div class="tw">
+        <table>
+          <thead><tr>
+            <th class="nowrap"><span class="l-zh">2027 推估</span><span class="l-en">2027, estimated</span></th>
+            <th><span class="l-zh">項目</span><span class="l-en">Item</span></th>
+            <th><span class="l-zh">它對計畫的意義</span><span class="l-en">What it means for the plan</span></th>
+            <th class="nowrap"><span class="l-zh">負責</span><span class="l-en">Owner</span></th>
+            <th class="nowrap"><span class="l-zh">2026 原始日期</span><span class="l-en">2026 date</span></th>
+          </tr></thead>
+          <tbody id="duetable"></tbody>
+        </table>
+      </div>
+      <div class="box box--warn">
+        <h5><span class="l-zh">一條容易漏掉的評審規則</span><span class="l-en">A judging rule that is easy to miss</span></h5>
+        <p class="l-zh">每一項獎牌條件與獎項都對應一個指定的標準網址。評審沒有義務去看那些網址與 Registry 頁面之外的東西。所以每一項工作在排進這張圖的時候，就要同時決定它最後出現在哪一個網址上。做了但放錯頁面，等於沒做。</p>
+        <p class="l-en">Every medal criterion and award maps to a designated Standard URL, and judges are not obliged to look beyond those URLs and the relevant Registry pages. So every work item on this chart also decides, when it is scheduled, which URL it will finally appear on. Done but filed in the wrong place counts as not done.</p>
+      </div>
+    </section>
+
+    <!-- ================================================= HOW TO USE ====== -->
+    <section class="panel" id="p4" role="tabpanel" aria-labelledby="t4" hidden>
+      <div class="sec">
+        <h2 class="bi"><span class="zh">這張圖怎麼用</span><span class="en">How to use this chart</span></h2>
+
+        <h3 class="bi"><span class="zh">定案那天，先做三件事</span><span class="en">On the day you commit, do three things</span></h3>
+        <ol>
+          <li class="l-zh"><b>把最長交期那一項往左推到底。</b>合成 DNA、索取質體、特殊耗材、海關，這些是只能等的事。圖上「寒假第一個 sprint」之所以在二月，不是因為那時候最有空，是因為那是唯一能買回時間的位置。</li>
+          <li class="l-zh"><b>把招牌功能往左推。</b>整季最常被講出來的那個功能，排在三月底有答案。它排得越後面，不通過的代價越高。</li>
+          <li class="l-zh"><b>把 n 寫進圖裡。</b>M1 到 M6 每一條的名稱上都帶著 n。n 不是實驗時的決定，是排程與預算時的決定——同型批次做三次要排三次的時間和三次的耗材。</li>
+          <li class="l-en"><b>Push the longest-lead item as far left as it goes.</b> Synthesised DNA, plasmid requests, special consumables, customs: these can only be waited for. "The first sprint" sits in February not because that is when people are free, but because it is the only place that buys time back.</li>
+          <li class="l-en"><b>Push the headline function left.</b> The thing everyone says out loud has its answer by the end of March. The later it sits, the more failing it costs.</li>
+          <li class="l-en"><b>Put n into the chart.</b> Every row from M1 to M6 carries its n in its name. n is not a decision made at the bench; it is a decision made in the schedule and the budget — three runs of the same kind need three slots and three sets of consumables.</li>
+        </ol>
+
+        <h3 class="bi"><span class="zh">每週怎麼讀</span><span class="en">Reading it weekly</span></h3>
+        <p class="l-zh">按「只看關鍵路徑」，圖上剩下的就是會決定這一季成敗的那幾條。如果這一週沒有任何人在那幾條上面工作，那就是這一週的問題。</p>
+        <p class="l-en">Press "critical path only" and what is left is the set of rows that decides the season. If nobody worked on any of them this week, that is this week's problem.</p>
+
+        <h3 class="bi"><span class="zh">一個常見的誤用</span><span class="en">One common misuse</span></h3>
+        <p class="l-zh">不要把這張圖當成進度條。它不是用來顯示完成百分比的，它是用來回答「如果這一條晚兩週，誰會跟著晚」。點任何一條，看「它卡住什麼」那一欄——那一欄才是排程的理由。</p>
+        <p class="l-en">Do not read this as a progress bar. It does not show percentage complete; it answers "if this slips two weeks, who slips with it". Click any row and read "what waits on it". That column is the reason the schedule looks like this.</p>
+
+        <h3 class="bi"><span class="zh">換成你自己的題目</span><span class="en">Making it yours</span></h3>
+        <p class="l-zh">這張圖是題目中立的：M1 到 M6 是「核心產物定量」、「活性定量」、「圍堵驗證」這種形狀，不是任何特定題目的實驗。換題目的時候改的是每一條的名稱與內容，不是結構。結構——先確認單點失敗、再整合、再量應用端、最後停止收集——對任何 iGEM 題目都成立。</p>
+        <p class="l-en">The chart is project-neutral: M1 to M6 are shapes — core product quantified, activity quantified, containment verified — not any particular project's experiments. Changing project changes each row's name and content, not the structure. The structure (settle the single point of failure, then integrate, then measure at the application end, then stop collecting) holds for any iGEM project.</p>
+
+        <div class="box">
+          <h5><span class="l-zh">編輯這張圖</span><span class="l-en">Editing the chart</span></h5>
+          <p class="l-zh">所有內容都在 <code>milestones/milestones.js</code> 最上方的 <code>SEASON</code> 陣列裡，一條一個物件：日期、所屬工作線、是否在關鍵路徑上、必須先有哪些條目、交付什麼、完成條件。改那個陣列，圖、閘門卡片與繳交表會一起更新。</p>
+          <p class="l-en">Everything lives in the <code>SEASON</code> array at the top of <code>milestones/milestones.js</code>, one object per row: dates, track, whether it is on the critical path, what it cannot start without, what it delivers, what closes it. Edit that array and the chart, the gate cards and the deadline table all update together.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="sec" style="margin-top:var(--sp-8)">
+    <div class="idx">
+      <a href="../framework/#g4">
+        <p class="k"><span class="l-zh">架構</span><span class="l-en">Framework</span></p>
+        <p class="t"><span class="l-zh">G4 關鍵路徑</span><span class="l-en">G4 · The critical path</span></p>
+        <p class="d"><span class="l-zh">這張圖的排序規則從哪裡來：為什麼失敗代價最高的實驗排在最前面。</span><span class="l-en">Where this chart's ordering comes from: why the highest-cost-of-failure experiment goes first.</span></p>
+      </a>
+      <a href="../toolkit/#feb">
+        <p class="k"><span class="l-zh">清單</span><span class="l-en">Checklist</span></p>
+        <p class="t"><span class="l-zh">二月門檻二十二項</span><span class="l-en">The twenty-two-item bar</span></p>
+        <p class="d"><span class="l-zh">這張圖開始之前，桌上要有的東西。</span><span class="l-en">What must be on the table before this chart starts.</span></p>
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<footer class="foot">
+  <div class="foot__in">
+    <p class="l-zh">GEMS Taiwan · iGEM 2027 題目定案架構。iGEM 期限依 2026 賽季推估，公布後請以當季 <a href="https://competition.igem.org/about/calendar">行事曆</a> 為準。</p>
+    <p class="l-en">GEMS Taiwan · the iGEM 2027 project decision framework. iGEM deadlines are estimated from the 2026 season; work from the current season's <a href="https://competition.igem.org/about/calendar">calendar</a> once it is published.</p>
+  </div>
+</footer>
+
+<script src="../assets/js/app.js"></script>
+<script src="milestones.js"></script>
+</body>
+</html>

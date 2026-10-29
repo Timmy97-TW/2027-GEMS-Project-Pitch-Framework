@@ -1,0 +1,199 @@
+/* =============================================================================
+   The season chart
+   -----------------------------------------------------------------------------
+   A Gantt built out of one absolutely-positioned lane per row. The label column
+   is sticky, so the chart scrolls sideways under it on a narrow screen. Nothing
+   here is decorative: a bar's colour is its track, a dot means critical path,
+   a dashed rule is a gate, and the solid amber rule is freeze day.
+   ========================================================================== */
+
+/* the view switcher does not float over a chart: it would sit on the filter
+   row and on the month scale, both of which the reader is aiming at */
+.page-ms .seg { position: static; }
+
+.chartwrap {
+  margin: var(--sp-5) 0 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 18px;
+  box-shadow: 0 0 0 1px var(--gray-200);
+  background: #fff;
+}
+.gt { position: relative; min-width: 1000px; padding: 0 0 var(--sp-5); }
+.gt__head { position: sticky; top: var(--nav-h); z-index: 6; display: flex;
+            background: rgb(255 255 255 / .94); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-200); }
+.gt__lab, .gt__lane { min-width: 0; }
+.gt__lab {
+  position: sticky; left: 0; z-index: 4;
+  flex: 0 0 15rem; width: 15rem;
+  padding: .5rem .85rem .5rem 1rem;
+  background: #fff;
+  border-right: 1px solid var(--gray-200);
+  font-size: .8125rem; line-height: 1.35; color: var(--ink-2);
+}
+.gt__lab--head { height: 2.6rem; }
+.gt__lane { position: relative; flex: 1 1 auto; height: 2.1rem; }
+.gt__lane--head { height: 2.6rem; }
+
+.gt__mo { position: absolute; top: 0; bottom: 0; padding-left: .4rem;
+          border-left: 1px solid var(--gray-200); display: flex; flex-direction: column; justify-content: center; }
+.gt__mo b { font-size: .6875rem; font-weight: 650; letter-spacing: .04em; color: var(--ink-2); }
+.gt__mo i { font-style: normal; font-size: .625rem; color: var(--gray-400); }
+
+.gt__grp {
+  position: sticky; left: 0; z-index: 5;
+  margin: 0; padding: .7rem 1rem .35rem;
+  width: max-content; min-width: 15rem;
+  font-size: .6875rem; font-weight: 650; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--tc, var(--leaf-700));
+}
+.gt__grp[hidden] { display: none; }
+
+.gt__row { display: flex; align-items: stretch; transition: opacity .25s ease; }
+.gt__row[hidden] { display: none; }
+.gt__row:hover .gt__lab { background: var(--gray-50); }
+.gt__cf { margin-left: .35rem; font-size: .5rem; color: var(--tc); vertical-align: middle; }
+
+.gt .is-focus { }
+.gt.is-focus .gt__row { opacity: .26; }
+.gt.is-focus .gt__row.is-lit { opacity: 1; }
+.gt.is-focus .gt__row.is-on .gt__lab { background: var(--leaf-50); }
+
+/* -- a bar -- */
+.gt__bar {
+  position: absolute; top: .38rem; bottom: .38rem;
+  display: flex; align-items: center;
+  padding: 0 .55rem;
+  border: 0; border-radius: 7px;
+  background: color-mix(in srgb, var(--tc) 30%, #fff);
+  box-shadow: inset 3px 0 0 var(--tc);
+  font: inherit; font-size: .75rem; line-height: 1;
+  color: color-mix(in srgb, var(--tc) 82%, #000);
+  text-align: left; white-space: nowrap; overflow: hidden; cursor: pointer;
+  transition: background .2s, box-shadow .2s, transform .2s;
+}
+.gt__bar:hover { background: color-mix(in srgb, var(--tc) 44%, #fff); }
+.is-crit .gt__bar { box-shadow: inset 5px 0 0 var(--tc), 0 0 0 1px color-mix(in srgb, var(--tc) 50%, #fff); }
+.gt__row.is-on .gt__bar { background: var(--tc); color: #fff; box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--tc); }
+/* the row already carries the name in the sticky column; a truncated copy
+   inside a narrow bar reads as damage, so the bar keeps it only for a
+   screen reader */
+.gt__barl {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* -- a point: gate or deadline -- */
+.gt__pt {
+  position: absolute; top: 0; bottom: 0;
+  display: flex; align-items: center; gap: .35rem;
+  padding: 0; border: 0; background: none; font: inherit; cursor: pointer;
+  transform: translateX(-6px);
+}
+.gt__ptm { flex: none; width: 11px; height: 11px; }
+.gt__pt--gate .gt__ptm { background: var(--rust-700); transform: rotate(45deg); border-radius: 2px; }
+.gt__pt--due .gt__ptm { background: #fff; border: 2px solid var(--slate-700); border-radius: 50%; }
+.gt__pt--big .gt__ptm { background: var(--amber-700); border-color: var(--amber-700); }
+.gt__ptl { font-size: .75rem; line-height: 1; color: var(--ink-3); white-space: nowrap; }
+.gt__pt:hover .gt__ptl { color: var(--ink); }
+.gt__row.is-on .gt__ptl { color: var(--ink); font-weight: 650; }
+.gt__row.is-on .gt__ptm { box-shadow: 0 0 0 3px color-mix(in srgb, var(--rust-700) 25%, #fff); }
+/* a point near the right edge draws its label to the left so it stays
+   inside the chart; the class is set in JS from the computed position */
+.gt__pt--rev { flex-direction: row-reverse; transform: translateX(6px); }
+
+/* -- overlay rules -- */
+.gt__rules { position: absolute; left: 15rem; right: 0; top: 2.6rem; bottom: var(--sp-5); pointer-events: none; z-index: 1; }
+.gt__rules i { position: absolute; top: 0; bottom: 0; width: 1px; }
+.gt__ml { background: var(--gray-200); }
+.gt__gl { background: repeating-linear-gradient(180deg, color-mix(in srgb, var(--rust-700) 55%, #fff) 0 4px, transparent 4px 8px); }
+.gt__fl { background: var(--amber-700); opacity: .5; }
+.gt__now { background: #d2143c; }
+.gt__now::after { content: ""; position: absolute; top: 0; left: -3px; width: 7px; height: 7px; border-radius: 50%; background: #d2143c; }
+
+/* -------------------------------------------------------------- legend --- */
+.legend { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; margin: var(--sp-4) 0 0;
+          font-size: .8125rem; color: var(--ink-3); }
+.legend span { display: inline-flex; align-items: center; gap: .4rem; }
+.legend .sw { width: 1.4rem; height: .55rem; border-radius: 3px; background: var(--leaf-200); box-shadow: inset 2px 0 0 var(--leaf-700); }
+.legend .dm { width: 10px; height: 10px; background: var(--rust-700); transform: rotate(45deg); border-radius: 2px; }
+.legend .ci { width: 10px; height: 10px; border: 2px solid var(--slate-700); border-radius: 50%; }
+.legend .dt0 { width: .45rem; height: .45rem; border-radius: 50%; background: var(--leaf-700); }
+
+/* ------------------------------------------------------------- filters --- */
+.filters { display: flex; flex-wrap: wrap; gap: .35rem; margin: var(--sp-5) 0 0; }
+.fchip {
+  padding: .35rem .8rem; border: 1px solid var(--gray-200); border-radius: 999px;
+  background: #fff; font: inherit; font-size: .8438rem; font-weight: 500;
+  color: var(--ink-2); cursor: pointer; transition: all .2s;
+}
+.fchip:hover { border-color: var(--fc, var(--leaf-700)); color: var(--fc, var(--leaf-900)); }
+.fchip.is-on { background: var(--fc, var(--leaf-900)); border-color: var(--fc, var(--leaf-900)); color: #fff; font-weight: 600; }
+
+/* -------------------------------------------------------------- detail --- */
+.detail {
+  margin: var(--sp-5) 0 0;
+  padding: clamp(1.25rem, .9rem + 1.6vw, 2rem);
+  border-radius: 22px; background: #fff;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / .07), 0 22px 40px -34px rgb(0 0 0 / .35);
+  scroll-margin-top: calc(var(--nav-h) + 1rem);
+}
+.detail[hidden] { display: none; }
+.dt__top { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; margin: 0 0 .6rem; }
+.dt__top span { padding: .14rem .55rem; border-radius: 999px; font-size: .6875rem; font-weight: 650; letter-spacing: .05em; }
+.dt__kind { background: color-mix(in srgb, var(--tc) 14%, #fff); color: color-mix(in srgb, var(--tc) 85%, #000); }
+.dt__track { background: var(--well); color: var(--ink-3); letter-spacing: 0 !important; }
+.dt__crit { background: var(--leaf-100); color: var(--leaf-900); letter-spacing: 0 !important; }
+.dt__gate { background: var(--slate-100); color: var(--slate-700); }
+.dt__name { margin: 0; font-size: clamp(1.25rem, 1.1rem + .6vw, 1.5rem); font-weight: 700;
+            letter-spacing: -.02em; line-height: 1.2; color: var(--leaf-900); }
+.dt__when { margin: .3rem 0 0; font-size: .875rem; color: var(--ink-3); }
+.dt__rows { display: grid; gap: var(--sp-4); margin: var(--sp-5) 0 0; }
+@media (min-width: 52rem) { .dt__rows { grid-template-columns: 1fr 1fr; } }
+.dt__r { padding: .85rem 1rem; border-radius: 14px; background: var(--well); }
+.dt__r--fail { background: var(--rust-100); }
+.dt__r--note { background: var(--amber-100); }
+.dt__r h6 { margin: 0 0 .35rem; font-size: .6875rem; font-weight: 650; letter-spacing: .09em;
+            text-transform: uppercase; color: var(--ink-3); }
+.dt__r--fail h6 { color: var(--rust-700); }
+.dt__r--note h6 { color: var(--amber-700); }
+.dt__r p { margin: 0; font-size: .9375rem; line-height: 1.6; color: var(--ink-2); }
+.dt__links { display: flex; flex-wrap: wrap; gap: .35rem; }
+.dt__go { padding: .2rem .6rem; border: 1px solid var(--gray-300); border-radius: 999px;
+          background: #fff; font: inherit; font-size: .8125rem; color: var(--leaf-700); cursor: pointer; }
+.dt__go:hover { border-color: var(--leaf-700); background: var(--leaf-50); }
+
+/* ---------------------------------------------------------- gate cards --- */
+.gcards { display: grid; gap: 1rem; margin: var(--sp-5) 0 0; }
+@media (min-width: 56rem) { .gcards { grid-template-columns: 1fr 1fr; } }
+.gcard { padding: clamp(1.25rem, .9rem + 1.6vw, 1.85rem); border-radius: 22px; background: #fff;
+         box-shadow: 0 0 0 1px rgb(0 0 0 / .07), 0 22px 40px -34px rgb(0 0 0 / .3);
+         border-top: 3px solid var(--rust-700); }
+.gcard__when { margin: 0; font-size: .75rem; font-weight: 650; letter-spacing: .06em; color: var(--rust-700); }
+.gcard__name { margin: .3rem 0 .5rem; font-size: 1.25rem; font-weight: 700; letter-spacing: -.02em; color: var(--leaf-900); }
+.gcard__q { margin: 0 0 1rem; font-size: .9688rem; line-height: 1.6; color: var(--ink-2); }
+.gcard__b { padding: .8rem 1rem; border-radius: 14px; margin: 0 0 .6rem; }
+.gcard__b--pass { background: var(--leaf-50); }
+.gcard__b--fail { background: var(--rust-100); }
+.gcard__b h6 { margin: 0 0 .3rem; font-size: .6875rem; font-weight: 650; letter-spacing: .09em;
+               text-transform: uppercase; color: var(--leaf-700); }
+.gcard__b--fail h6 { color: var(--rust-700); }
+.gcard__b p { margin: 0; font-size: .9063rem; line-height: 1.6; color: var(--ink-2); }
+.gcard__o { margin: .75rem 0 0; font-size: .8125rem; color: var(--ink-3); }
+
+/* ----------------------------------------------------------------- hint -- */
+.hint { margin: var(--sp-4) 0 0; font-size: .8438rem; color: var(--ink-3); }
+
+@media (max-width: 760px) {
+  .gt__lab { flex-basis: 10.5rem; width: 10.5rem; font-size: .75rem; padding-left: .75rem; }
+  .gt__rules { left: 10.5rem; }
+  .gt__grp { min-width: 10.5rem; padding-left: .75rem; }
+}
+
+@media print {
+  .filters, .hint { display: none; }
+  .chartwrap { overflow: visible; box-shadow: none; border: 1px solid #ccc; }
+  .gt { min-width: 0; }
+  .gcard, .detail { box-shadow: none; border: 1px solid #ccc; }
+}

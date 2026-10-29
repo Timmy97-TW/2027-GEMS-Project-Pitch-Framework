@@ -25,7 +25,9 @@ iGEM 不是比誰的想法最好，是比誰的想法到十月能被證明。這
 | [`index.html`](index.html) | 總覽 | The thesis, the gate map, the February bar in summary, three rules for judging a pitch, and what the 2026 season cost |
 | [`framework/`](framework/) | 十道門 | Each gate in full: the question, the evidence required by February, the red flags, how it scores |
 | [`releaf/`](releaf/) | ReLEAF 範例 | All ten gates filled with the 2026 ReLEAF project, each February answer set beside what actually happened |
+| [`milestones/`](milestones/) | 里程碑 | An interactive season chart: six tracks, four go/no-go gates, ten iGEM deadlines, each with what it delivers, its pass condition, its owner and its dependency chain |
 | [`toolkit/`](toolkit/) | 工具包 | The 22-item February bar, the one-page pitch template, the 100-point PK scorecard, the 2026 hindsight ledger, and the nine-week calendar from kick-off to commitment |
+| [`brief/`](brief/) | 開跑包 | The twelve-box project brief that instructors and students both fill in, and the handout for the 12 December kick-off |
 
 ## The ten gates / 十道門
 

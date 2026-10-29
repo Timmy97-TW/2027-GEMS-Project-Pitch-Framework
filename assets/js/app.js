@@ -38,8 +38,13 @@
       var thumb = track.querySelector('.seg__thumb');
       var on = track.querySelector('.seg__btn[aria-selected="true"]');
       if (!thumb || !on) return;
-      thumb.style.width = on.offsetWidth + 'px';
-      thumb.style.transform = 'translateX(' + (on.offsetLeft - 5) + 'px)';
+      /* measured, not offsetWidth: that rounds down and clips the last glyph.
+         The thumb is absolutely positioned against the track's padding box,
+         which is where getBoundingClientRect measures from too, so the track's
+         own 5px padding must not be subtracted again. */
+      var a = on.getBoundingClientRect(), b = track.getBoundingClientRect();
+      thumb.style.width = a.width + 'px';
+      thumb.style.transform = 'translateX(' + (a.left - b.left + track.scrollLeft) + 'px)';
       track.classList.add('has-thumb');
     });
   }
