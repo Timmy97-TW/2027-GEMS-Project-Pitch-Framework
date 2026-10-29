@@ -384,34 +384,40 @@
       return '<div class="anat__v"><b>' + r[0] + '</b><span>' + bi(r[1], r[2]) + '</span></div>';
     }).join('') + '</div>';
 
-  /* --- legend --- */
-  h += '<div class="anat__key">';
-  PHASES.forEach(function (p) {
-    h += '<span class="anat__kp" style="--pc:' + p.c + '"><i></i>' + bi(p.zh, p.en) + '</span>';
+  /* --- the completeness bar: fifteen ticks, the shape of the proposal --- */
+  h += '<div class="tally">';
+  h += '<div class="tally__bar" aria-hidden="true">';
+  PAGES.forEach(function (p, i) {
+    var brk = i > 0 && PAGES[i - 1].ph !== p.ph;
+    h += '<i class="s-' + p.state + (brk ? ' brk' : '') + '" style="--i:' + i + '"></i>';
   });
-  h += '<span class="anat__sp"></span>';
+  h += '</div>';
+  h += '<div class="tally__key">';
   ['ok', 'thin', 'none'].forEach(function (s) {
-    h += '<span class="anat__ks s-' + s + '"><i></i>' + bi(STATE[s].zh, STATE[s].en) +
-         ' <b>' + counts[s] + '</b></span>';
+    h += '<span class="tk s-' + s + '"><b>' + counts[s] + '</b>' + bi(STATE[s].zh, STATE[s].en) + '</span>';
   });
-  h += '</div>';
+  h += '</div></div>';
 
-  /* --- the fifteen pages --- */
-  h += '<div class="anat__grid" role="list">';
-  PAGES.forEach(function (p) {
-    var ph = phById[p.ph];
-    h += '<button class="pg s-' + p.state + '" type="button" role="listitem" ' +
-         'data-pg="' + p.n + '" style="--pc:' + ph.c + '" ' +
-         'aria-label="' + p.n + ' ' + p.en + '">' +
-         '<span class="pg__band"></span>' +
-         '<span class="pg__n">' + (p.n < 10 ? '0' + p.n : p.n) + '</span>' +
-         '<span class="pg__t">' + bi(p.zh, p.en) + '</span>' +
-         '<span class="pg__mini">' + MINI[p.type] + '</span>' +
-         '<span class="pg__u">' + bi(p.unit.zh, p.unit.en) + '</span>' +
-         '<span class="pg__s"></span>' +
-         '</button>';
+  /* --- the fifteen sheets, in four groups --- */
+  PHASES.forEach(function (ph) {
+    var mine = PAGES.filter(function (p) { return p.ph === ph.id; });
+    h += '<section class="pgrp">';
+    h += '<h4 class="pgrp__t"><span class="pgrp__r">' +
+         ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ'][ph.id - 1] + '</span>' + bi(ph.zh, ph.en) +
+         '<em>' + mine[0].n + '–' + mine[mine.length - 1].n + '</em></h4>';
+    h += '<div class="pgrp__s" role="list">';
+    mine.forEach(function (p) {
+      h += '<button class="pg s-' + p.state + '" type="button" role="listitem" ' +
+           'data-pg="' + p.n + '" aria-label="' + p.n + ' ' + p.en + '">' +
+           '<span class="pg__n">' + (p.n < 10 ? '0' + p.n : p.n) + '</span>' +
+           '<span class="pg__t">' + bi(p.zh, p.en) + '</span>' +
+           '<span class="pg__mini">' + MINI[p.type] + '</span>' +
+           '<span class="pg__u">' + bi(p.unit.zh, p.unit.en) + '</span>' +
+           '<span class="pg__st">' + bi(STATE[p.state].zh, STATE[p.state].en) + '</span>' +
+           '</button>';
+    });
+    h += '</div></section>';
   });
-  h += '</div>';
 
   h += '<p class="anat__hint">' +
     bi('點任何一頁，看它要回答什麼、要研究到什麼程度、ReLEAF 當時寫了什麼、以及後來證明夠不夠。',
@@ -475,7 +481,10 @@
     var n = +b.getAttribute('data-pg');
     if (b.classList.contains('pg') && b.classList.contains('is-on')) { close(); return; }
     open(n);
-    if (b.classList.contains('pgd__b')) det.scrollIntoView({ block: 'start' });
+    /* the panel sits below all four groups, so a sheet in the first group
+       would otherwise open three groups out of sight. 'nearest' brings it in
+       with the least movement that makes it readable. */
+    det.scrollIntoView({ block: b.classList.contains('pgd__b') ? 'start' : 'nearest' });
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !det.hidden) close(); });
 }());
