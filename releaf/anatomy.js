@@ -345,146 +345,228 @@
     }
   ];
 
+
+  /* ===========================================================================
+     The board
+     ---------------------------------------------------------------------------
+     Fifteen tiles on a twelve-column bento. Nine of them carry a real artefact
+     off the 2026 bench — the reactor, a run's data, the twin's screen, the lit
+     light plate, the containment plates — because a proposal section is easier
+     to understand from the thing it eventually produced than from a diagram of
+     itself. Two tiles carry nothing at all, and that is the argument.
+
+     `at` is an explicit grid-area so the board composes on purpose rather than
+     by flow. On a phone the areas are dropped and the tiles run two across.
+     ========================================================================= */
+
+  var TILES = {
+    /* rows 1–6: the machine, the data it made, and the screen it ran on */
+    1:  { kind: 'photo', img: 'reactor.webp',    at: '1 / 1 / 7 / 5',   pos: '50% 46%' },
+    10: { kind: 'chart', img: 'permeate.webp',   at: '1 / 5 / 4 / 9'  },
+    12: { kind: 'photo', img: 'twin.webp',       at: '1 / 9 / 4 / 13',  pos: '50% 46%' },
+    9:  { kind: 'photo', img: 'lpa.webp',        at: '4 / 5 / 7 / 9',   pos: '50% 52%' },
+    2:  { kind: 'photo', img: 'farm.webp',       at: '4 / 9 / 7 / 13',  pos: '50% 58%' },
+    /* rows 7–8: the instrument, the world it reads, the evidence, the design */
+    11: { kind: 'photo', img: 'photometer.webp', at: '7 / 1 / 9 / 4',   pos: '50% 50%' },
+    4:  { kind: 'chart', img: 'gis.webp',        at: '7 / 4 / 9 / 7'  },
+    13: { kind: 'chart', img: 'plates.webp',     at: '7 / 7 / 9 / 10' },
+    8:  { kind: 'chart', img: 'constructs.webp', at: '7 / 10 / 9 / 13' },
+    /* rows 9–10: the pages with no picture, and the two with nothing at all */
+    5:  { kind: 'text',  at: '9 / 1 / 11 / 3',  big: '3', note: { zh: '篇錨論文，從 40–60 篇略讀裡挑出', en: 'anchors, out of 40–60 skimmed' } },
+    3:  { kind: 'text',  at: '9 / 3 / 11 / 5',  big: '5', note: { zh: '階階梯。十月站在第 2–3 階', en: 'rungs. October stood at two to three' } },
+    7:  { kind: 'text',  at: '9 / 5 / 11 / 7',  big: '1', note: { zh: '種新意：新方法', en: 'kind of increment: a new method' } },
+    15: { kind: 'text',  at: '9 / 7 / 11 / 9',  big: '3', note: { zh: '個特別獎名額，也是金牌條件', en: 'award slots, and the Gold criterion' } },
+    6:  { kind: 'empty', at: '9 / 9 / 11 / 11' },
+    14: { kind: 'empty', at: '9 / 11 / 11 / 13' }
+  };
+
+  /* what each artefact is, said plainly under or over the picture */
+  var CAPTION = {
+    1:  { zh: '反應器本體', en: 'The reactor itself' },
+    2:  { zh: '淡水的農場，2 月', en: 'A farm in Tamsui, February' },
+    4:  { zh: '夜溫與稻作產量，逐縣', en: 'Night temperature against rice yield, by county' },
+    8:  { zh: '五個可互換的構築模組', en: 'Five interchangeable construct modules' },
+    9:  { zh: '光板運轉中，9 月 19 日', en: 'The light plate running, 19 September' },
+    10: { zh: '透膜側 72 小時：ELISA、活性、比活性', en: 'The permeate over 72 h: ELISA, activity, specific activity' },
+    11: { zh: '管線內光度計接上迴路', en: 'The in-line photometer on the loop' },
+    12: { zh: 'Digital Twin 的實際畫面', en: 'The digital twin, as it actually ran' },
+    13: { zh: '透膜側兩次塗盤，都沒有長', en: 'Two platings of the permeate, both clean' }
+  };
+
   var root = document.getElementById('anatomy');
   if (!root) return;
 
   var phById = {}; PHASES.forEach(function (p) { phById[p.id] = p; });
+  var byN = {};   PAGES.forEach(function (p) { byN[p.n] = p; });
   var STATE = {
-    ok:   { zh: '兌現',   en: 'Delivered', c: 'ok' },
-    thin: { zh: '不夠深', en: 'Not deep enough', c: 'thin' },
-    none: { zh: '沒寫',   en: 'Never written', c: 'none' }
+    ok:   { zh: '兌現',   en: 'Delivered' },
+    thin: { zh: '不夠深', en: 'Not deep enough' },
+    none: { zh: '沒寫',   en: 'Never written' }
   };
 
   function bi(zh, en) { return '<span class="l-zh">' + zh + '</span><span class="l-en">' + en + '</span>'; }
 
-  /* the little drawing inside a page thumbnail, by content type */
-  var MINI = {
-    hero:   '<i style="width:70%;height:7px"></i><i style="width:92%"></i><i style="width:84%"></i><i style="width:60%"></i>',
-    text:   '<i style="width:88%"></i><i style="width:95%"></i><i style="width:78%"></i><i style="width:90%"></i><i style="width:52%"></i>',
-    list:   '<i class="d" style="width:80%"></i><i class="d" style="width:92%"></i><i class="d" style="width:70%"></i><i class="d" style="width:86%"></i>',
-    table:  '<b class="tb"><s></s><s></s><s></s><s></s><s></s><s></s><s></s><s></s><s></s></b>',
-    chart:  '<b class="ch"><s style="height:36%"></s><s style="height:68%"></s><s style="height:48%"></s><s style="height:88%"></s></b>',
-    figure: '<b class="fg"></b><i style="width:84%"></i><i style="width:62%"></i>'
-  };
-
   var counts = { ok: 0, thin: 0, none: 0 };
   PAGES.forEach(function (p) { counts[p.state]++; });
 
-  var h = '';
+  /* ----------------------------------------------------------- the board -- */
 
-  /* --- the research-volume strip: what this proposal cost to write --- */
-  h += '<div class="anat__vol">' +
-    [['15', '頁完整提案', 'pages of pitch'],
-     ['3', '篇錨論文（40–60 篇略讀）', 'anchor papers, 40–60 skimmed'],
-     ['10–15', '支 iGEM 前人隊伍', 'prior iGEM teams'],
-     ['3', '場定案前的對話', 'conversations before committing'],
-     ['6', '組必須落地的數據', 'data sets that must land'],
-     ['3', '個特別獎名額（上限）', 'Special Award slots, the cap']
-    ].map(function (r) {
-      return '<div class="anat__v"><b>' + r[0] + '</b><span>' + bi(r[1], r[2]) + '</span></div>';
-    }).join('') + '</div>';
+  var h = '<div class="bento">';
+  PAGES.forEach(function (p) {
+    var t = TILES[p.n];
+    var cap = CAPTION[p.n];
+    var cls = ['tile', 't-' + t.kind, 's-' + p.state];
+    h += '<button class="' + cls.join(' ') + '" type="button" data-pg="' + p.n + '" ' +
+         'style="--at:' + t.at + '" aria-label="' + p.n + '. ' + p.en + '">';
 
-  /* --- the completeness bar: fifteen ticks, the shape of the proposal --- */
-  h += '<div class="tally">';
-  h += '<div class="tally__bar" aria-hidden="true">';
-  PAGES.forEach(function (p, i) {
-    var brk = i > 0 && PAGES[i - 1].ph !== p.ph;
-    h += '<i class="s-' + p.state + (brk ? ' brk' : '') + '" style="--i:' + i + '"></i>';
+    if (t.kind === 'photo' || t.kind === 'chart') {
+      h += '<span class="tile__img"><img src="img/' + t.img + '" alt="" loading="lazy" decoding="async"' +
+           (t.pos ? ' style="object-position:' + t.pos + '"' : '') + '></span>';
+    }
+    h += '<span class="tile__body">';
+    h += '<span class="tile__n">' + (p.n < 10 ? '0' + p.n : p.n) + '</span>';
+    if (t.kind === 'text') {
+      h += '<span class="tile__big">' + t.big + '</span>';
+      h += '<span class="tile__h">' + bi(p.zh, p.en) + '</span>';
+      h += '<span class="tile__note">' + bi(t.note.zh, t.note.en) + '</span>';
+    } else if (t.kind === 'empty') {
+      h += '<span class="tile__h">' + bi(p.zh, p.en) + '</span>';
+      h += '<span class="tile__none">' + bi('這一頁沒有寫', 'This page was never written') + '</span>';
+    } else {
+      h += '<span class="tile__h">' + bi(p.zh, p.en) + '</span>';
+      if (cap) h += '<span class="tile__cap">' + bi(cap.zh, cap.en) + '</span>';
+    }
+    h += '</span>';
+    h += '<span class="tile__dot" title="' + STATE[p.state].en + '"></span>';
+    h += '</button>';
   });
   h += '</div>';
-  h += '<div class="tally__key">';
-  ['ok', 'thin', 'none'].forEach(function (s) {
-    h += '<span class="tk s-' + s + '"><b>' + counts[s] + '</b>' + bi(STATE[s].zh, STATE[s].en) + '</span>';
-  });
-  h += '</div></div>';
 
-  /* --- the fifteen sheets, in four groups --- */
-  PHASES.forEach(function (ph) {
-    var mine = PAGES.filter(function (p) { return p.ph === ph.id; });
-    h += '<section class="pgrp">';
-    h += '<h4 class="pgrp__t"><span class="pgrp__r">' +
-         ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ'][ph.id - 1] + '</span>' + bi(ph.zh, ph.en) +
-         '<em>' + mine[0].n + '–' + mine[mine.length - 1].n + '</em></h4>';
-    h += '<div class="pgrp__s" role="list">';
-    mine.forEach(function (p) {
-      h += '<button class="pg s-' + p.state + '" type="button" role="listitem" ' +
-           'data-pg="' + p.n + '" aria-label="' + p.n + ' ' + p.en + '">' +
-           '<span class="pg__n">' + (p.n < 10 ? '0' + p.n : p.n) + '</span>' +
-           '<span class="pg__t">' + bi(p.zh, p.en) + '</span>' +
-           '<span class="pg__mini">' + MINI[p.type] + '</span>' +
-           '<span class="pg__u">' + bi(p.unit.zh, p.unit.en) + '</span>' +
-           '<span class="pg__st">' + bi(STATE[p.state].zh, STATE[p.state].en) + '</span>' +
-           '</button>';
-    });
-    h += '</div></section>';
-  });
-
-  h += '<p class="anat__hint">' +
-    bi('點任何一頁，看它要回答什麼、要研究到什麼程度、ReLEAF 當時寫了什麼、以及後來證明夠不夠。',
-       'Click any page for what it has to answer, how much research it takes, what ReLEAF put there in 2026, and whether that turned out to be enough.') +
+  h += '<p class="board__hint">' +
+    bi('點任何一塊，看那一頁要回答什麼、要研究到什麼程度、ReLEAF 當時寫了什麼，以及後來證明夠不夠。',
+       'Open any tile for what that page has to answer, how much research it takes, what ReLEAF put there, and whether it was enough.') +
     '</p>';
-
-  h += '<div id="pgdetail" class="pgd" hidden></div>';
 
   root.innerHTML = h;
 
-  var det = document.getElementById('pgdetail');
+  /* fill the counts in the header strip */
+  ['ok', 'thin', 'none'].forEach(function (s) {
+    var el = document.querySelector('[data-count="' + s + '"]');
+    if (el) el.textContent = counts[s];
+  });
 
-  function open(n) {
-    var p = PAGES.filter(function (x) { return x.n === n; })[0];
-    if (!p) return;
-    var ph = phById[p.ph], st = STATE[p.state];
+  /* The tiles arrive once, staggered. One observer on the board, not fifteen
+     on the tiles: a tile that never quite crosses its own threshold would
+     otherwise stay invisible, which is a much worse failure than a missed
+     animation. Each tile keeps its own delay, so the stagger survives. */
+  var bento = root.querySelector('.bento');
+  if (bento && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    var tiles = Array.prototype.slice.call(root.querySelectorAll('.tile'));
+    tiles.forEach(function (t, i) { t.style.setProperty('--d', (i * 30) + 'ms'); t.classList.add('is-wait'); });
+    var reveal = function () { tiles.forEach(function (t) { t.classList.remove('is-wait'); }); };
+    var io = new IntersectionObserver(function (es) {
+      if (es.some(function (e) { return e.isIntersecting; })) { reveal(); io.disconnect(); }
+    }, { rootMargin: '0px 0px -5% 0px' });
+    io.observe(bento);
+    window.setTimeout(reveal, 4000);   /* nothing stays hidden, whatever happens */
+  }
 
-    var d = '<div class="pgd__top" style="--pc:' + ph.c + '">' +
-      '<span class="pgd__n">' + (p.n < 10 ? '0' + p.n : p.n) + ' / 15</span>' +
-      '<span class="pgd__ph">' + bi(ph.zh, ph.en) + '</span>' +
-      '<a class="pgd__g" href="#' + p.gate.toLowerCase() + '">' + p.gate + '</a>' +
-      '<span class="pgd__st s-' + p.state + '">' + bi(st.zh, st.en) + '</span>' +
-      '</div>';
-    d += '<h3 class="pgd__name">' + bi(p.zh, p.en) + '</h3>';
-    d += '<p class="pgd__ask">' + bi(p.ask.zh, p.ask.en) + '</p>';
-    d += '<div class="pgd__rows">';
-    d += '<div class="pgd__r pgd__r--depth"><h6>' +
-         bi('要研究到什麼程度', 'How much research this takes') +
+  /* ----------------------------------------------------------- the sheet -- */
+
+  var sheet = document.getElementById('sheet');
+  if (!sheet) return;
+  var lastFocus = null;
+
+  function build(n) {
+    var p = byN[n], t = TILES[n], ph = phById[p.ph], cap = CAPTION[n];
+    var s = '';
+
+    s += '<div class="sh__card" role="dialog" aria-modal="true" aria-label="' + p.en + '">';
+    s += '<button class="sh__x" type="button" data-shclose aria-label="Close">' +
+         '<svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true">' +
+         '<path d="M3.5 3.5l9 9M12.5 3.5l-9 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>';
+
+    if (t.img) {
+      s += '<figure class="sh__fig sh__fig--' + t.kind + '">' +
+           '<img src="img/' + t.img + '" alt="">' +
+           (cap ? '<figcaption>' + bi(cap.zh, cap.en) + '</figcaption>' : '') +
+           '</figure>';
+    }
+
+    s += '<div class="sh__in">';
+    s += '<div class="sh__chips">' +
+         '<span class="sh__n">' + (n < 10 ? '0' + n : n) + ' / 15</span>' +
+         '<span class="sh__ph">' + bi(ph.zh, ph.en) + '</span>' +
+         '<a class="sh__g" href="#' + p.gate.toLowerCase() + '" data-shgate>' + p.gate + '</a>' +
+         '<span class="sh__st s-' + p.state + '">' + bi(STATE[p.state].zh, STATE[p.state].en) + '</span>' +
+         '</div>';
+    s += '<h3 class="sh__name">' + bi(p.zh, p.en) + '</h3>';
+    s += '<p class="sh__ask">' + bi(p.ask.zh, p.ask.en) + '</p>';
+
+    s += '<div class="sh__rows">';
+    s += '<div class="sh__r sh__r--depth"><h6>' + bi('要研究到什麼程度', 'How much research this takes') +
          '<em>' + bi(p.unit.zh, p.unit.en) + '</em></h6><p>' + bi(p.depth.zh, p.depth.en) + '</p></div>';
-    d += '<div class="pgd__r"><h6>' + bi('ReLEAF 當時寫了什麼', 'What ReLEAF put here in 2026') +
+    s += '<div class="sh__r"><h6>' + bi('ReLEAF 當時寫了什麼', 'What ReLEAF put here in 2026') +
          '</h6><p>' + bi(p.had.zh, p.had.en) + '</p></div>';
-    d += '<div class="pgd__r pgd__r--' + p.state + '"><h6>' +
-         bi('後來證明夠不夠', 'Whether that was enough') +
+    s += '<div class="sh__r sh__r--' + p.state + '"><h6>' + bi('後來證明夠不夠', 'Whether that was enough') +
          '</h6><p>' + bi(p.after.zh, p.after.en) + '</p></div>';
-    d += '</div>';
-    d += '<div class="pgd__nav">';
-    var prev = PAGES.filter(function (x) { return x.n === n - 1; })[0];
-    var next = PAGES.filter(function (x) { return x.n === n + 1; })[0];
-    if (prev) d += '<button class="pgd__b" type="button" data-pg="' + prev.n + '">← ' + bi(prev.zh, prev.en) + '</button>';
-    if (next) d += '<button class="pgd__b" type="button" data-pg="' + next.n + '">' + bi(next.zh, next.en) + ' →</button>';
-    d += '<button class="pgd__b pgd__b--x" type="button" data-pgclose>' + bi('收起', 'Close') + '</button>';
-    d += '</div>';
+    s += '</div>';
 
-    det.innerHTML = d;
-    det.hidden = false;
-    Array.prototype.forEach.call(root.querySelectorAll('.pg'), function (b) {
+    s += '<div class="sh__nav">';
+    if (byN[n - 1]) s += '<button class="sh__b" type="button" data-pg="' + (n - 1) + '">← ' + bi(byN[n - 1].zh, byN[n - 1].en) + '</button>';
+    if (byN[n + 1]) s += '<button class="sh__b" type="button" data-pg="' + (n + 1) + '">' + bi(byN[n + 1].zh, byN[n + 1].en) + ' →</button>';
+    s += '</div>';
+    s += '</div></div>';
+    return s;
+  }
+
+  function openSheet(n) {
+    if (sheet.hidden) lastFocus = document.activeElement;
+    sheet.innerHTML = build(n);
+    sheet.hidden = false;
+    sheet.dataset.pg = n;
+    document.documentElement.classList.add('sh-open');
+    var x = sheet.querySelector('[data-shclose]');
+    if (x) x.focus();
+    Array.prototype.forEach.call(root.querySelectorAll('.tile'), function (b) {
       b.classList.toggle('is-on', +b.getAttribute('data-pg') === n);
     });
   }
 
-  function close() {
-    det.hidden = true;
-    det.innerHTML = '';
-    Array.prototype.forEach.call(root.querySelectorAll('.pg'), function (b) { b.classList.remove('is-on'); });
+  function closeSheet() {
+    sheet.hidden = true;
+    sheet.innerHTML = '';
+    delete sheet.dataset.pg;
+    document.documentElement.classList.remove('sh-open');
+    Array.prototype.forEach.call(root.querySelectorAll('.tile'), function (b) { b.classList.remove('is-on'); });
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
 
   root.addEventListener('click', function (e) {
-    if (e.target.closest('[data-pgclose]')) { close(); return; }
     var b = e.target.closest('[data-pg]');
-    if (!b) return;
-    var n = +b.getAttribute('data-pg');
-    if (b.classList.contains('pg') && b.classList.contains('is-on')) { close(); return; }
-    open(n);
-    /* the panel sits below all four groups, so a sheet in the first group
-       would otherwise open three groups out of sight. 'nearest' brings it in
-       with the least movement that makes it readable. */
-    det.scrollIntoView({ block: b.classList.contains('pgd__b') ? 'start' : 'nearest' });
+    if (b) openSheet(+b.getAttribute('data-pg'));
   });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !det.hidden) close(); });
+
+  sheet.addEventListener('click', function (e) {
+    if (e.target.closest('[data-shclose]')) { closeSheet(); return; }
+    if (e.target.closest('[data-shgate]')) { closeSheet(); return; }   /* let the hash do its work */
+    var b = e.target.closest('[data-pg]');
+    if (b) { openSheet(+b.getAttribute('data-pg')); return; }
+    if (!e.target.closest('.sh__card')) closeSheet();                  /* the backdrop */
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (sheet.hidden) return;
+    if (e.key === 'Escape') { closeSheet(); return; }
+    var cur = +sheet.dataset.pg;
+    if (e.key === 'ArrowRight' && byN[cur + 1]) { e.preventDefault(); openSheet(cur + 1); }
+    if (e.key === 'ArrowLeft' && byN[cur - 1]) { e.preventDefault(); openSheet(cur - 1); }
+    if (e.key === 'Tab') {                                             /* keep focus inside */
+      var f = sheet.querySelectorAll('button, a[href]');
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
 }());
